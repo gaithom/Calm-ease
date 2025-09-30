@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json.schemastore.org/settings",
+  "css.lint.unknownAtRules": "ignore",
+  "files.associations": {
+    "*.css": "postcss"
+  },
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+  "tailwindCSS.emmetCompletions": true,
+  "tailwindCSS.includeLanguages": {
+    "javascript": "javascriptreact",
+    "html": "html"
+  },
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  }
+}
