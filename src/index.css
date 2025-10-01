@@ -16,9 +16,34 @@
     --primary-800: 22 101 52;
     --primary-900: 20 83 45;
     
-    /* Gradient colors */
-    --gradient-from: 240 253 244; /* primary-50 */
-    --gradient-to: 255 255 255;   /* white */
+    /* Surface colors with transparency */
+    --surface-0: 255 255 255;      /* Base white */
+    --surface-50: 248 250 252;     /* Lightest gray */
+    --surface-100: 241 245 249;    /* Very light gray */
+    --surface-200: 226 232 240;    /* Light gray */
+    --surface-300: 203 213 225;    /* Medium light gray */
+    --surface-400: 148 163 184;    /* Medium gray */
+    --surface-500: 100 116 139;    /* Medium dark gray */
+    --surface-600: 71 85 105;      /* Dark gray */
+    --surface-700: 51 65 85;       /* Very dark gray */
+    --surface-800: 30 41 59;       /* Almost black */
+    --surface-900: 15 23 42;       /* Darkest gray */
+    --surface-950: 2 6 23;         /* Near black */
+    
+    /* Theme transition for smooth switching */
+    --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Glass effect variables */
+    --glass-bg: rgba(255, 255, 255, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.2);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark {
+    /* Dark theme adjustments */
+    --glass-bg: rgba(15, 23, 42, 0.7);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -186,6 +211,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 @layer components {
+  /* Glass Card */
+  .glass-card {
+    @apply rounded-xl p-6 backdrop-blur-md border border-opacity-30;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-theme);
+  }
+  
+  /* Glass Container */
+  .glass-container {
+    @apply rounded-2xl p-8 backdrop-blur-md border border-opacity-30;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-theme);
+  }
+  
+  /* Glass Panel - for sidebars and larger sections */
+  .glass-panel {
+    @apply rounded-2xl p-6 backdrop-blur-md border border-opacity-20;
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: var(--transition-theme);
+  }
+  
+  /* Hover effects */
+  .glass-card:hover, .glass-container:hover, .glass-panel:hover {
+    @apply shadow-lg;
+    transform: translateY(-1px);
+  }
+  
   h1 { 
     font-size: 2.75rem; /* 44px */
     line-height: 1.2;

@@ -99,15 +99,15 @@ export default function Navbar() {
             >
               <div className="relative">
                 <img 
-                  src="/logo192.png" 
+                  src="/logo512.png" 
                   alt="" 
                   className="h-8 w-8 transition-transform duration-300 group-hover:rotate-12 group-focus:ring-2 group-focus:ring-primary-500 rounded-full" 
                   aria-hidden="true"
                 />
                 <span className="sr-only">Calm-ease</span>
               </div>
-              <span className="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent dark:from-primary-400 dark:to-primary-300">
-                Calm-ease
+              <span className="text-xl font-bold text-white">
+                Calm-space
               </span>
             </NavLink>
           </div>

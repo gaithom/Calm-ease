@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { useSound } from '../context/SoundContext';
 import EmergencyAccessSection from '../components/EmergencyAccessSection';
 import PersonalizedDashboard from '../components/PersonalizedDashboard';
+import backgroundImage from '../assets/background2.png';
 
 export default function Home() {
   const { favorites, backgroundSounds } = useSound();
@@ -18,16 +19,32 @@ export default function Home() {
 
   return (
     <div className="min-h-screen relative">
-      {/* Floating Emergency Button */}
-      <div className="fixed bottom-6 right-6 z-50">
-        <button 
-          className={`w-16 h-16 rounded-full text-white shadow-lg transition-all duration-200 flex flex-col items-center justify-center text-xs font-medium ${
-            quickCalmActive 
-              ? 'bg-green-500 hover:bg-green-600 animate-pulse' 
-              : 'bg-red-500 hover:bg-red-600'
-          }`}
-          title={quickCalmActive ? 'Quick calm active...' : 'Emergency calm - instant help'}
-          onClick={quickCalmActive ? () => setQuickCalmActive(false) : startQuickCalm}
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50 dark:bg-black/70 z-10"></div>
+      </div>
+      
+      {/* Content */}
+      <div className="relative z-20">
+        {/* Floating Emergency Button */}
+        <div className="fixed bottom-6 right-6 z-50">
+          <button 
+            className={`w-16 h-16 rounded-full text-white shadow-lg transition-all duration-200 flex flex-col items-center justify-center text-xs font-medium ${
+              quickCalmActive 
+                ? 'bg-green-500 hover:bg-green-600 animate-pulse' 
+                : 'bg-red-500 hover:bg-red-600'
+            }`}
+            title={quickCalmActive ? 'Quick calm active...' : 'Emergency calm - instant help'}
+            onClick={quickCalmActive ? () => setQuickCalmActive(false) : startQuickCalm}
         >
           {quickCalmActive ? (
             <>
@@ -206,6 +223,7 @@ export default function Home() {
           </p>
         </div>
       </section>
+      </div>
     </div>
   );
 }

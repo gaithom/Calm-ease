@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo192.png" alt="Calm-ease Logo" className="h-8 w-8" />
+              <img src="/logo512.png" alt="Calm-ease Logo" className="h-8 w-8" />
               <span className="text-xl font-bold text-emerald-900 dark:text-white">Calm-ease</span>
             </div>
             <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
