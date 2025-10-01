@@ -84,8 +84,8 @@ export default function Navbar() {
       ref={navRef}
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled 
-          ? 'bg-surface-50/95 dark:bg-surface-900/95 backdrop-blur-sm shadow-sm' 
-          : 'bg-surface-50 dark:bg-surface-900'
+          ? 'bg-emerald-600/95 dark:bg-emerald-900/95 backdrop-blur-sm shadow-sm' 
+          : 'bg-emerald-600 dark:bg-emerald-900'
       }`}
       role="banner"
     >
@@ -122,10 +122,10 @@ export default function Navbar() {
                 key={item.name}
                 to={item.path}
                 className={({ isActive }) =>
-                  `group relative px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 ${
+                  `group relative px-3 py-2 text-sm font-medium rounded-md transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-emerald-400 ${
                     isActive
-                      ? 'text-primary-600 dark:text-primary-400'
-                      : 'text-surface-700 hover:text-surface-900 dark:text-surface-300 dark:hover:text-white'
+                      ? 'text-white'
+                      : 'text-white/90 hover:text-white'
                   }`
                 }
                 aria-current={location.pathname === item.path ? 'page' : undefined}
@@ -137,7 +137,7 @@ export default function Navbar() {
                       {item.name}
                     </span>
                     <span 
-                      className={`absolute -bottom-1 left-1/2 w-4/5 h-0.5 bg-primary-500 dark:bg-primary-400 rounded-full transform -translate-x-1/2 transition-all duration-300 ${
+                      className={`absolute -bottom-1 left-1/2 w-4/5 h-0.5 bg-white/70 rounded-full transform -translate-x-1/2 transition-all duration-300 ${
                         isActive ? 'opacity-100 scale-100' : 'opacity-0 scale-0 group-hover:opacity-100 group-hover:scale-100'
                       }`}
                       aria-hidden="true"

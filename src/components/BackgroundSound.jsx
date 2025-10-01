@@ -17,7 +17,7 @@ export default function BackgroundSound() {
       <h2 className="text-xl font-semibold mb-4">Background Sounds</h2>
       <div className="grid sm:grid-cols-2 gap-3">
         {backgroundSounds.map((s) => (
-          <div key={s.id} className="flex items-center justify-between gap-3 rounded-xl border border-slate-200/70 dark:border-slate-700/60 p-3 bg-white/60 dark:bg-slate-800/50">
+          <div key={s.id} className="flex items-center justify-between gap-3 rounded-xl border border-emerald-200/70 dark:border-emerald-800/60 p-3 bg-emerald-50/60 dark:bg-emerald-900/50">
             <div>
               <div className="font-medium">{s.name}</div>
               <button

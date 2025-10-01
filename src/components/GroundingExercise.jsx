@@ -46,7 +46,7 @@ export default function GroundingExercise() {
             id="grounding-input"
             type="text"
             placeholder="Type one..."
-            className="flex-1 rounded-lg border border-slate-300 dark:border-slate-700 bg-white/80 dark:bg-slate-800/60 p-3"
+            className="flex-1 rounded-lg border border-emerald-300 dark:border-emerald-800 bg-emerald-50/80 dark:bg-emerald-900/60 p-3"
             aria-label="Enter an item"
             onKeyDown={(e) => { if (e.key === 'Enter') addEntry(); }}
           />
@@ -55,7 +55,7 @@ export default function GroundingExercise() {
 
         <ul className="mt-3 grid sm:grid-cols-2 gap-2" aria-live="polite">
           {(entries[step.id] || []).map((v, i) => (
-            <li key={`${step.id}-${i}`} className="rounded-lg bg-white/70 dark:bg-slate-800/50 border border-slate-200/60 dark:border-slate-700/60 p-3">
+            <li key={`${step.id}-${i}`} className="rounded-lg bg-emerald-50/70 dark:bg-emerald-900/50 border border-emerald-200/60 dark:border-emerald-800/60 p-3">
               {i + 1}. {v}
             </li>
           ))}

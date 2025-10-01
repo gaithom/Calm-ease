@@ -28,7 +28,7 @@ export default function ThemeToggle() {
     <div className="relative theme-toggle">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className={`p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors flex items-center ${currentTheme.color} text-white`}
+        className={`p-2 rounded-full hover:bg-slate-100 dark:hover:bg-emerald-900 transition-colors flex items-center ${currentTheme.color} text-white`}
         aria-label="Change theme"
       >
         <span className="w-5 h-5 flex items-center justify-center">
@@ -45,7 +45,7 @@ export default function ThemeToggle() {
       </button>
       
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-40 bg-white dark:bg-slate-800 rounded-lg shadow-lg py-1 z-50 border border-slate-200 dark:border-slate-700">
+        <div className="absolute right-0 mt-2 w-40 bg-emerald-50 dark:bg-emerald-900 rounded-lg shadow-lg py-1 z-50 border border-emerald-200 dark:border-emerald-800">
           <div className="px-3 py-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider">
             Theme Colors
           </div>
@@ -56,7 +56,7 @@ export default function ThemeToggle() {
                 setTheme(t.value);
                 setIsOpen(false);
               }}
-              className={`w-full text-left px-4 py-2 text-sm flex items-center ${theme === t.value ? 'bg-slate-100 dark:bg-slate-700' : 'hover:bg-slate-50 dark:hover:bg-slate-700'}`}
+              className={`w-full text-left px-4 py-2 text-sm flex items-center ${theme === t.value ? 'bg-slate-100 dark:bg-emerald-800' : 'hover:bg-slate-50 dark:hover:bg-emerald-800'}`}
             >
               <span className={`w-3 h-3 rounded-full ${t.color} mr-3`}></span>
               {t.name}
