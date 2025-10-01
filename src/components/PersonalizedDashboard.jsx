@@ -63,11 +63,11 @@ export default function PersonalizedDashboard({ favoriteSounds }) {
         
         {/* Personal Greeting */}
         <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-3 mb-4 px-6 py-3 bg-white/80 dark:bg-slate-800/80 rounded-full shadow-sm border border-emerald-200/50 dark:border-emerald-700/50">
+          <div className="inline-flex items-center gap-3 mb-4 px-6 py-3 bg-white dark:bg-white rounded-full shadow-md border border-emerald-200 dark:border-emerald-300">
             <span className="text-2xl">{timeMessage.icon}</span>
-            <span className="font-medium text-slate-800 dark:text-white">{timeMessage.message}</span>
+            <span className="font-medium text-slate-800 dark:text-slate-800">{timeMessage.message}</span>
           </div>
-          <h2 className="text-3xl font-light text-slate-900 dark:text-white mb-2">
+          <h2 className="text-3xl font-light text-emerald-900 dark:text-white mb-2">
             Your <span className="font-semibold text-emerald-700 dark:text-emerald-300">calm journey</span>
           </h2>
           <p className="text-slate-600 dark:text-slate-300">
@@ -77,28 +77,28 @@ export default function PersonalizedDashboard({ favoriteSounds }) {
 
         {/* Quick Stats */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-          <div className="bg-white/70 dark:bg-slate-800/70 rounded-2xl p-4 text-center border border-emerald-200/30 dark:border-emerald-700/30">
+          <div className="bg-white dark:bg-white rounded-2xl p-4 text-center border border-emerald-300 dark:border-emerald-300 shadow-sm">
             <div className="text-2xl mb-2">🎯</div>
-            <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-300">{weeklyStats.sessionsCompleted}</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Sessions this week</div>
+            <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-700">{weeklyStats.sessionsCompleted}</div>
+            <div className="text-xs text-slate-600 dark:text-slate-600">Sessions this week</div>
           </div>
           
-          <div className="bg-white/70 dark:bg-slate-800/70 rounded-2xl p-4 text-center border border-blue-200/30 dark:border-blue-700/30">
+          <div className="bg-white dark:bg-white rounded-2xl p-4 text-center border border-emerald-300 dark:border-emerald-300 shadow-sm">
             <div className="text-2xl mb-2">⏱️</div>
-            <div className="text-2xl font-bold text-blue-700 dark:text-blue-300">{weeklyStats.totalMinutes}m</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Total practice time</div>
+            <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-700">{weeklyStats.totalMinutes}m</div>
+            <div className="text-xs text-slate-600 dark:text-slate-600">Total practice time</div>
           </div>
           
-          <div className="bg-white/70 dark:bg-slate-800/70 rounded-2xl p-4 text-center border border-purple-200/30 dark:border-purple-700/30">
+          <div className="bg-white dark:bg-white rounded-2xl p-4 text-center border border-emerald-300 dark:border-emerald-300 shadow-sm">
             <div className="text-2xl mb-2">🔥</div>
-            <div className="text-2xl font-bold text-purple-700 dark:text-purple-300">{weeklyStats.longestStreak}</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Day streak</div>
+            <div className="text-2xl font-bold text-emerald-700 dark:text-emerald-700">{weeklyStats.longestStreak}</div>
+            <div className="text-xs text-slate-600 dark:text-slate-600">Day streak</div>
           </div>
           
-          <div className="bg-white/70 dark:bg-slate-800/70 rounded-2xl p-4 text-center border border-amber-200/30 dark:border-amber-700/30">
+          <div className="bg-white dark:bg-white rounded-2xl p-4 text-center border border-emerald-300 dark:border-emerald-300 shadow-sm">
             <div className="text-2xl mb-2">🌟</div>
-            <div className="text-sm font-bold text-amber-700 dark:text-amber-300">{weeklyStats.favoriteTime}</div>
-            <div className="text-xs text-slate-600 dark:text-slate-400">Preferred time</div>
+            <div className="text-sm font-bold text-emerald-700 dark:text-emerald-700">{weeklyStats.favoriteTime}</div>
+            <div className="text-xs text-slate-600 dark:text-slate-600">Preferred time</div>
           </div>
         </div>
 
@@ -107,8 +107,8 @@ export default function PersonalizedDashboard({ favoriteSounds }) {
           
           {/* Recent Activity */}
           <div className="lg:col-span-1">
-            <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+            <div className="bg-white dark:bg-white rounded-2xl p-6 border border-emerald-200 dark:border-emerald-300 shadow-md">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 mb-4 flex items-center gap-2">
                 <span className="text-xl">📋</span>
                 Recent Activity
               </h3>
@@ -140,8 +140,8 @@ export default function PersonalizedDashboard({ favoriteSounds }) {
 
           {/* Suggested for You */}
           <div className="lg:col-span-2">
-            <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl p-6 border border-slate-200/50 dark:border-slate-700/50">
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+            <div className="bg-white dark:bg-white rounded-2xl p-6 border border-emerald-200 dark:border-emerald-300 shadow-md">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 mb-4 flex items-center gap-2">
                 <span className="text-xl">💡</span>
                 Suggested for You
               </h3>

@@ -12,9 +12,9 @@ export default function CalmNowButton({ size = 'base', className = '' }) {
     <Link
       to="/calm-now"
       className={`inline-flex items-center justify-center rounded-full font-medium ${sizeClasses[size] || sizeClasses.base} 
-        bg-gradient-to-r from-primary-500 to-primary-600 hover:from-primary-600 hover:to-primary-700 
-        text-white shadow-lg hover:shadow-primary-500/30 hover:-translate-y-0.5
-        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500 
+        bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 
+        text-white shadow-lg hover:shadow-emerald-500/30 hover:-translate-y-0.5
+        focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-emerald-500
         transition-all duration-200 transform active:scale-95 ${className}`}
     >
       <svg

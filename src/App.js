@@ -25,7 +25,7 @@ function ThemeWrapper({ children }) {
     document.documentElement.style.backgroundColor = '#064e3b'; // Dark emerald background for the entire page
     } else {
       document.documentElement.classList.remove('dark');
-    document.documentElement.style.backgroundColor = '#d1fae5'; // Light emerald background for the entire page
+    document.documentElement.style.backgroundColor = '#f0fdfa'; // Light emerald background for the entire page
     }
     
     // Update CSS variables based on theme

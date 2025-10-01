@@ -44,7 +44,7 @@ export default function Home() {
       </div>
 
       {/* Gentle, Supportive Hero Section */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-blue-50/80 via-emerald-50/60 to-indigo-50/80 dark:from-emerald-900/20 dark:via-blue-900/20 dark:to-indigo-900/20 transition-colors duration-300">
+      <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-emerald-50/90 via-white/80 to-emerald-100/60 dark:from-emerald-900/30 dark:via-emerald-800/20 dark:to-emerald-900/40 transition-colors duration-300">
         <div className="relative max-w-6xl mx-auto text-center">
           <div className="inline-flex items-center gap-2 mb-6 px-6 py-3 rounded-full bg-emerald-100/70 dark:bg-emerald-800/40 text-emerald-800 dark:text-emerald-200 shadow-sm">
             <span className="text-xl">🤗</span>
@@ -66,8 +66,8 @@ export default function Home() {
           </p>
 
           {/* Immediate Help Section */}
-          <div className="bg-white/70 dark:bg-slate-800/70 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-emerald-200/50 dark:border-emerald-700/50">
-            <h2 className="text-lg font-semibold text-slate-800 dark:text-white mb-4">
+          <div className="bg-white/90 dark:bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-emerald-200 dark:border-emerald-300 shadow-lg">
+            <h2 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 mb-4">
               🆘 Need help right now?
             </h2>
             <div className="flex flex-col sm:flex-row gap-3">
@@ -84,7 +84,7 @@ export default function Home() {
                 🧠 Ground Yourself
               </Link>
             </div>
-            <p className="text-sm text-slate-600 dark:text-slate-400 mt-3">
+            <p className="text-sm text-slate-700 dark:text-slate-700 mt-3">
               Both take less than 2 minutes and can be done anywhere, anytime
             </p>
           </div>
@@ -95,11 +95,11 @@ export default function Home() {
       <EmergencyAccessSection quickCalmActive={quickCalmActive} />
 
       {/* Anxiety-Specific Support Section */}
-      <section className="py-16 bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-900 dark:to-blue-900">
+      <section className="py-16 bg-gradient-to-br from-emerald-50/80 to-white dark:from-emerald-900/40 dark:to-emerald-800/30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-light text-slate-900 dark:text-white sm:text-4xl mb-4">
-              When <span className="font-semibold text-blue-700 dark:text-blue-300">anxiety symptoms</span> feel overwhelming
+            <h2 className="text-3xl font-light text-emerald-900 dark:text-white sm:text-4xl mb-4">
+              When <span className="font-semibold text-emerald-700 dark:text-emerald-300">anxiety symptoms</span> feel overwhelming
             </h2>
             <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
               We understand what you're going through. Here's how our tools can help with specific anxiety symptoms.
@@ -108,14 +108,14 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Racing Heart */}
-            <div className="bg-white/80 dark:bg-slate-800/80 p-6 rounded-2xl shadow-sm border border-red-200/50 dark:border-red-700/50 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-white p-6 rounded-2xl shadow-md border border-red-200 dark:border-red-300 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                 <span className="text-3xl">❤️‍🩹</span>
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-3">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 text-center mb-3">
                 Racing Heart & Panic
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-center mb-4 text-sm">
+              <p className="text-slate-600 dark:text-slate-600 text-center mb-4 text-sm">
                 When your heart is pounding and you feel like you can't breathe
               </p>
               <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
@@ -125,14 +125,14 @@ export default function Home() {
             </div>
 
             {/* Racing Thoughts */}
-            <div className="bg-white/80 dark:bg-slate-800/80 p-6 rounded-2xl shadow-sm border border-purple-200/50 dark:border-purple-700/50 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-white p-6 rounded-2xl shadow-md border border-purple-200 dark:border-purple-300 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                 <span className="text-3xl">🌪️</span>
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-3">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 text-center mb-3">
                 Racing Thoughts
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-center mb-4 text-sm">
+              <p className="text-slate-600 dark:text-slate-600 text-center mb-4 text-sm">
                 When your mind won't stop spinning and you can't focus
               </p>
               <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
@@ -142,14 +142,14 @@ export default function Home() {
             </div>
 
             {/* Feeling Disconnected */}
-            <div className="bg-white/80 dark:bg-slate-800/80 p-6 rounded-2xl shadow-sm border border-amber-200/50 dark:border-amber-700/50 hover:shadow-md transition-shadow">
+            <div className="bg-white dark:bg-white p-6 rounded-2xl shadow-md border border-amber-200 dark:border-amber-300 hover:shadow-lg transition-shadow">
               <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                 <span className="text-3xl">🫥</span>
               </div>
-              <h3 className="text-lg font-semibold text-slate-900 dark:text-white text-center mb-3">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 text-center mb-3">
                 Feeling Disconnected
               </h3>
-              <p className="text-slate-600 dark:text-slate-300 text-center mb-4 text-sm">
+              <p className="text-slate-600 dark:text-slate-600 text-center mb-4 text-sm">
                 When you feel like you're floating or not really "here"
               </p>
               <div className="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
@@ -177,10 +177,10 @@ export default function Home() {
       <PersonalizedDashboard favoriteSounds={favoriteSounds} />
 
       {/* Supportive Final CTA */}
-      <section className="py-16 bg-gradient-to-r from-emerald-100/80 via-blue-100/60 to-purple-100/80 dark:from-emerald-900/30 dark:via-blue-900/30 dark:to-purple-900/30">
+      <section className="py-16 bg-gradient-to-r from-emerald-100/90 via-white/80 to-emerald-50/90 dark:from-emerald-900/40 dark:via-emerald-800/30 dark:to-emerald-900/40">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="text-4xl mb-6">🌱</div>
-          <h2 className="text-3xl font-light text-slate-900 dark:text-white sm:text-4xl mb-4">
+          <h2 className="text-3xl font-light text-emerald-900 dark:text-white sm:text-4xl mb-4">
             Taking the first step takes <span className="font-semibold text-emerald-700 dark:text-emerald-300">courage</span>
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">

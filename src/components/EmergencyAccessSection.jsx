@@ -96,8 +96,8 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               
               {/* Immediate (0-30 seconds) */}
-              <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl p-6 border border-red-200/50 dark:border-red-700/50">
-                <h3 className="text-xl font-semibold text-red-800 dark:text-red-200 mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-white rounded-2xl p-6 border border-red-300 dark:border-red-400 shadow-md">
+                <h3 className="text-xl font-semibold text-red-800 dark:text-red-800 mb-4 flex items-center gap-2">
                   <span className="text-2xl">🚨</span>
                   Right Now (0-30 seconds)
                 </h3>
@@ -112,10 +112,10 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
                       <div className="flex items-start gap-3">
                         <div className="text-2xl">{technique.icon}</div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-slate-800 dark:text-white">
+                          <h4 className="font-semibold text-slate-800 dark:text-slate-800">
                             {technique.name}
                           </h4>
-                          <p className="text-sm text-slate-600 dark:text-slate-300 mb-1">
+                          <p className="text-sm text-slate-600 dark:text-slate-600 mb-1">
                             {technique.description}
                           </p>
                           <div className="text-xs text-red-600 dark:text-red-400">
@@ -129,8 +129,8 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
               </div>
 
               {/* Guided (30s - 2min) */}
-              <div className="bg-white/80 dark:bg-slate-800/80 rounded-2xl p-6 border border-blue-200/50 dark:border-blue-700/50">
-                <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-200 mb-4 flex items-center gap-2">
+              <div className="bg-white dark:bg-white rounded-2xl p-6 border border-blue-300 dark:border-blue-400 shadow-md">
+                <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-800 mb-4 flex items-center gap-2">
                   <span className="text-2xl">🧘</span>
                   Guided Techniques (30s - 2min)
                 </h3>
@@ -145,10 +145,10 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
                       <div className="flex items-start gap-3">
                         <div className="text-2xl">{technique.icon}</div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-slate-800 dark:text-white">
+                          <h4 className="font-semibold text-slate-800 dark:text-slate-800">
                             {technique.name}
                           </h4>
-                          <p className="text-sm text-slate-600 dark:text-slate-300 mb-1">
+                          <p className="text-sm text-slate-600 dark:text-slate-600 mb-1">
                             {technique.description}
                           </p>
                           <div className="flex items-center justify-between">
