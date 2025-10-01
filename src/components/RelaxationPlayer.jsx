@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState, useCallback } from 'react';
 import { useSound } from '../context/SoundContext';
 import useAudioPlayer from '../hooks/useAudioPlayer';
 
@@ -72,7 +72,27 @@ export default function RelaxationPlayer() {
     return () => clearInterval(id);
   }, [isPlaying, isVoicePlaying]);
 
-  const onToggle = async () => {
+  const fadeOutAndStop = useCallback((ms = 2000) => {
+    if (fadeRef.current) clearInterval(fadeRef.current);
+    const startVol = voiceVolume;
+    const steps = 20;
+    let i = 0;
+    fadeRef.current = setInterval(() => {
+      i++;
+      const vol = Math.max(0, startVol * (1 - i / steps));
+      setVoiceVolume(vol);
+      if (i >= steps) {
+        clearInterval(fadeRef.current);
+        pause();
+        pauseVoice();
+        setVoiceVolume(startVol);
+        setRemaining(null);
+        playChime();
+      }
+    }, Math.max(10, Math.floor(ms / steps)));
+  }, [voiceVolume, setVoiceVolume, pause, pauseVoice]);
+
+  const onToggle = useCallback(async () => {
     if (isPlaying || isVoicePlaying) {
       pause();
       pauseVoice();
@@ -81,7 +101,7 @@ export default function RelaxationPlayer() {
       await play();
       if (remaining == null && minutes > 0) setRemaining(minutes * 60);
     }
-  };
+  }, [isPlaying, isVoicePlaying, pause, pauseVoice, playVoice, selected, play, remaining, minutes]);
 
   // Timer countdown and fade-out
   useEffect(() => {
@@ -103,7 +123,7 @@ export default function RelaxationPlayer() {
     };
     let raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [remaining, isPlaying, isVoicePlaying]);
+  }, [remaining, isPlaying, isVoicePlaying, fadeOutAndStop]);
 
   const playChime = () => {
     try {
@@ -121,25 +141,6 @@ export default function RelaxationPlayer() {
     } catch {}
   };
 
-  const fadeOutAndStop = (ms = 2000) => {
-    if (fadeRef.current) clearInterval(fadeRef.current);
-    const startVol = voiceVolume;
-    const steps = 20;
-    let i = 0;
-    fadeRef.current = setInterval(() => {
-      i++;
-      const vol = Math.max(0, startVol * (1 - i / steps));
-      setVoiceVolume(vol);
-      if (i >= steps) {
-        clearInterval(fadeRef.current);
-        pause();
-        pauseVoice();
-        setVoiceVolume(startVol);
-        setRemaining(null);
-        playChime();
-      }
-    }, Math.max(10, Math.floor(ms / steps)));
-  };
 
   // Keyboard shortcuts
   useEffect(() => {

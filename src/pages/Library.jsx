@@ -3,16 +3,57 @@ import LibraryManager from '../components/LibraryManager';
 
 export default function Library() {
   return (
-    <div className="space-y-6">
-      <LibraryManager />
-      <section className="card">
-        <h2 className="text-lg font-semibold mb-2">Notes</h2>
-        <ul className="list-disc pl-5 text-slate-700 dark:text-slate-300 text-sm">
-          <li>Files are stored locally in your browser (IndexedDB). They never upload to a server.</li>
-          <li>You can upload songs or voice notes and play them as voice guidance or background.</li>
-          <li>YouTube links can’t be added as audio files due to copyright/CORS. If you want, I can add a YouTube embed player instead.</li>
-        </ul>
-      </section>
+    <div className="min-h-screen bg-gradient-to-br from-sky-50/30 via-white to-emerald-50/30 dark:from-slate-900 dark:via-slate-800 dark:to-emerald-900/20">
+      <div className="max-w-6xl mx-auto py-8 px-4">
+        {/* Header Section */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-3 mb-4 px-6 py-3 rounded-full bg-emerald-100/60 dark:bg-emerald-800/30 text-emerald-800 dark:text-emerald-200">
+            <span className="text-2xl">🎵</span>
+            <span className="font-medium text-lg">Your Peaceful Library</span>
+          </div>
+          
+          <h1 className="text-4xl md:text-5xl font-light text-slate-800 dark:text-slate-100 mb-4">
+            <span className="font-semibold text-emerald-700 dark:text-emerald-300">Personal</span> audio sanctuary
+          </h1>
+          
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-2xl mx-auto">
+            Create your own collection of calming sounds, guided meditations, and peaceful music
+          </p>
+        </div>
+
+        {/* Main Library Manager */}
+        <div className="mb-8">
+          <LibraryManager />
+        </div>
+
+        {/* Information Section */}
+        <div className="bg-white/60 dark:bg-slate-800/40 rounded-2xl p-8 border border-slate-200/50 dark:border-slate-700/50 backdrop-blur-sm">
+          <div className="flex items-center gap-3 mb-6">
+            <span className="text-2xl">🔒</span>
+            <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-200">Privacy & Security</h2>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-6 text-sm">
+            <div className="text-center p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-900/20 border border-emerald-200/50 dark:border-emerald-700/50">
+              <div className="text-2xl mb-3">💾</div>
+              <h3 className="font-medium text-emerald-800 dark:text-emerald-200 mb-2">Local Storage</h3>
+              <p className="text-emerald-700 dark:text-emerald-300">All files stay on your device using IndexedDB - never uploaded to servers</p>
+            </div>
+            
+            <div className="text-center p-4 rounded-xl bg-blue-50/50 dark:bg-blue-900/20 border border-blue-200/50 dark:border-blue-700/50">
+              <div className="text-2xl mb-3">🎧</div>
+              <h3 className="font-medium text-blue-800 dark:text-blue-200 mb-2">Audio Types</h3>
+              <p className="text-blue-700 dark:text-blue-300">Upload music, voice notes, or nature sounds for background or guidance</p>
+            </div>
+            
+            <div className="text-center p-4 rounded-xl bg-amber-50/50 dark:bg-amber-900/20 border border-amber-200/50 dark:border-amber-700/50">
+              <div className="text-2xl mb-3">📱</div>
+              <h3 className="font-medium text-amber-800 dark:text-amber-200 mb-2">Compatible Files</h3>
+              <p className="text-amber-700 dark:text-amber-300">Supports most audio formats - YouTube requires direct file uploads</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
