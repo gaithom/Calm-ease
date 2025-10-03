@@ -81,7 +81,7 @@ export default function EmergencyGroundingSection({ quickGroundingActive }) {
   const [activeExercise, setActiveExercise] = useState(null);
   const [currentStep, setCurrentStep] = useState(0);
   const [timeRemaining, setTimeRemaining] = useState(0);
-  const [isRunning, setIsRunning] = useState(false);
+  const [, setIsRunning] = useState(false);
 
   // Handle quick grounding timer
   useEffect(() => {
@@ -147,7 +147,7 @@ export default function EmergencyGroundingSection({ quickGroundingActive }) {
       <div className="max-w-4xl mx-auto">
         {/* Active Exercise Display */}
         {activeExercise && (
-          <div className="mb-8 card border-2 border-emerald-300 dark:border-emerald-600 bg-emerald-50/70 dark:bg-emerald-900/30">
+<div className="mb-8 card">
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-3 mb-3">
                 <span className="text-3xl">{activeExercise.icon}</span>
@@ -190,7 +190,7 @@ export default function EmergencyGroundingSection({ quickGroundingActive }) {
 
         {/* Quick grounding feedback */}
         {quickGroundingActive && !activeExercise && (
-          <div className="mb-8 card border-2 border-amber-300 dark:border-amber-600 bg-amber-50/70 dark:bg-amber-900/30">
+<div className="mb-8 card">
             <div className="text-center">
               <div className="text-2xl mb-3">⚡</div>
               <h3 className="text-lg font-semibold text-amber-800 dark:text-amber-200 mb-2">
@@ -224,14 +224,14 @@ export default function EmergencyGroundingSection({ quickGroundingActive }) {
 
             {/* Immediate Relief Cards */}
             <div className="mb-8">
-              <h3 className="text-lg font-semibold mb-4 text-red-700 dark:text-red-300">
+<h3 className="text-lg font-semibold mb-4 text-emerald-800 dark:text-emerald-200">
                 🚨 Right Now (10-15 seconds each)
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {IMMEDIATE_GROUNDING.map((technique, index) => (
                   <div
                     key={index}
-                    className="card border-l-4 border-l-red-400 hover:border-l-red-500 transition-colors cursor-pointer hover:bg-red-50/50 dark:hover:bg-red-900/20"
+className="card cursor-pointer"
                   >
                     <div className="text-center">
                       <div className="text-2xl mb-2">{technique.icon}</div>
@@ -249,14 +249,14 @@ export default function EmergencyGroundingSection({ quickGroundingActive }) {
 
             {/* Guided Exercises */}
             <div>
-              <h3 className="text-lg font-semibold mb-4 text-blue-700 dark:text-blue-300">
+<h3 className="text-lg font-semibold mb-4 text-emerald-800 dark:text-emerald-200">
                 🧘 Guided Exercises
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {QUICK_GROUNDING_TECHNIQUES.map((exercise) => (
                   <div
                     key={exercise.id}
-                    className="card border-l-4 border-l-blue-400 hover:border-l-blue-500 transition-all hover:shadow-md cursor-pointer"
+className="card cursor-pointer"
                     onClick={() => startExercise(exercise)}
                   >
                     <div className="text-center mb-4">

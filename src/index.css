@@ -441,32 +441,34 @@ a {
 
 /* Cards */
 .card {
-  @apply rounded-xl border border-emerald-200 bg-white shadow-sm transition-all duration-200 hover:shadow-md dark:border-emerald-700 dark:bg-white;
-  padding: 2rem; /* More generous padding */
+  @apply rounded-2xl border shadow-sm transition-all duration-200 hover:shadow-md;
+  /* Unified Emerald glass panel */
+  @apply border-emerald-200/60 bg-emerald-50/70 dark:border-emerald-700/50 dark:bg-emerald-900/30;
+  padding: 1.5rem; /* Consistent padding across the app */
   
   &-title {
     font-family: 'Inter', 'system-ui', sans-serif;
-    font-size: 1.375rem; /* 22px */
+    font-size: 1.25rem; /* 20px */
     font-weight: 600;
-    line-height: 1.3;
+    line-height: 1.35;
     letter-spacing: -0.01em;
-    color: rgb(6, 78, 59); /* Emerald-900 */
-    margin-bottom: 1rem;
+    color: rgb(6, 78, 59); /* emerald-900 */
+    margin-bottom: 0.75rem;
   }
   
   &-body {
     font-size: 1rem; /* 16px */
     line-height: 1.7;
-    color: rgb(71, 85, 105); /* Slate-600 */
+    color: rgb(71, 85, 105); /* slate-600 */
     letter-spacing: 0.005em;
   }
   
   .dark &-title {
-    color: rgb(6, 78, 59); /* Keep emerald in dark mode too */
+    color: rgb(16, 185, 129); /* emerald-500 for better contrast */
   }
   
   .dark &-body {
-    color: rgb(71, 85, 105); /* Keep consistent in dark mode */
+    color: rgb(203, 213, 225); /* slate-300 */
   }
 }
 

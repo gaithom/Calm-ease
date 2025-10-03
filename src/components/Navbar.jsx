@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FaBars, FaTimes, FaHome, FaWind, FaLeaf, FaBook, FaInfoCircle } from 'react-icons/fa';
-import { useTheme } from '../context/ThemeContext';
 import ThemeSelector from './ThemeSelector';
 
 const navItems = [
@@ -15,9 +14,7 @@ const navItems = [
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { darkMode } = useTheme();
   const location = useLocation();
-  const navigate = useNavigate();
 
   // Close mobile menu when route changes
   useEffect(() => {

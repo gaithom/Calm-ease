@@ -154,7 +154,7 @@ export default function QuickReliefSection() {
         {/* Quick Action Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {/* Breathing Patterns */}
-          <div className="card border-l-4 border-l-emerald-500">
+<div className="card">
             <h3 className="text-lg font-semibold mb-4 text-emerald-700 dark:text-emerald-300">
               🫁 Breathing Exercises
             </h3>
@@ -198,8 +198,8 @@ export default function QuickReliefSection() {
           </div>
 
           {/* Instant Calming Sounds */}
-          <div className="card border-l-4 border-l-blue-500">
-            <h3 className="text-lg font-semibold mb-4 text-blue-700 dark:text-blue-300">
+<div className="card">
+<h3 className="text-lg font-semibold mb-4 text-emerald-800 dark:text-emerald-200">
               🔊 Instant Calm Sounds
             </h3>
             <div className="space-y-3">
@@ -249,8 +249,8 @@ export default function QuickReliefSection() {
         </div>
 
         {/* Emergency Grounding - Always visible */}
-        <div className="card bg-blue-50/50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
-          <h3 className="text-lg font-semibold mb-3 text-blue-800 dark:text-blue-200">
+<div className="card">
+<h3 className="text-lg font-semibold mb-3 text-emerald-800 dark:text-emerald-200">
             🆘 If you're feeling overwhelmed right now
           </h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">

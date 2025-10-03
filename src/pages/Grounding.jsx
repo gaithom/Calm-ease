@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import GroundingExercise from '../components/GroundingExercise';
 import EmergencyGroundingSection from '../components/EmergencyGroundingSection';
 import PublicGroundingExercises from '../components/PublicGroundingExercises';
+import backgroundImage from '../assets/background2.png';
 
 export default function Grounding() {
   const [quickGroundingActive, setQuickGroundingActive] = useState(false);
@@ -16,7 +17,24 @@ export default function Grounding() {
   };
 
   return (
-    <main className="container relative">
+    <div className="min-h-screen relative">
+      {/* Background Image with Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
+        style={{
+          backgroundImage: `url(${backgroundImage})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundAttachment: 'fixed'
+        }}
+      >
+        {/* Dark Overlay */}
+        <div className="absolute inset-0 bg-black/50 dark:bg-black/70 z-10"></div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-20">
+        <main className="container relative">
       {/* Gentle Floating Helper */}
       <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-3">
         {/* Emergency Reset */}
@@ -169,7 +187,7 @@ export default function Grounding() {
           <GroundingExercise />
           
           {/* Enhanced Tips card */}
-          <section className="card bg-blue-50/50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800">
+<section className="card">
             <h2 className="text-lg font-semibold mb-3 text-blue-800 dark:text-blue-200">Helpful Grounding Tips</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -196,6 +214,8 @@ export default function Grounding() {
           </section>
         </div>
       )}
-    </main>
+        </main>
+      </div>
+    </div>
   );
 }

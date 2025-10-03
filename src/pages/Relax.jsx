@@ -197,8 +197,8 @@ const Relax = () => {
                 <BackgroundSound />
 
                 {/* Priority: Immediate Grounding Techniques */}
-                <section className="card border-l-4 border-l-blue-500" aria-label="Emergency grounding techniques">
-                  <h2 className="text-lg font-semibold mb-3 text-blue-700 dark:text-blue-300">🌊 Right Now</h2>
+<section className="card" aria-label="Emergency grounding techniques">
+<h2 className="text-lg font-semibold mb-3 text-emerald-800 dark:text-emerald-200">🌊 Right Now</h2>
                   <ul className="space-y-3 text-slate-700 dark:text-slate-300 text-sm">
                     <li className="flex items-start gap-2">
                       <span className="text-blue-500 font-bold text-lg">•</span>

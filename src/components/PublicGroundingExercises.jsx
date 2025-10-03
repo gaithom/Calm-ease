@@ -164,11 +164,11 @@ export default function PublicGroundingExercises() {
       <div className="max-w-6xl mx-auto">
         {/* Active Exercise Display */}
         {activeExercise && (
-          <div className="mb-8 card border-2 border-amber-300 dark:border-amber-600 bg-gradient-to-br from-amber-50/80 to-orange-50/80 dark:from-amber-900/30 dark:to-orange-900/30">
+<div className="mb-8 card">
             <div className="text-center mb-6">
               <div className="inline-flex items-center gap-3 mb-3">
                 <span className="text-3xl">{activeExercise.icon}</span>
-                <h3 className="text-xl font-semibold text-amber-800 dark:text-amber-200">
+<h3 className="text-xl font-semibold text-emerald-800 dark:text-emerald-200">
                   {activeExercise.name}
                 </h3>
               </div>
@@ -258,12 +258,7 @@ export default function PublicGroundingExercises() {
                 {PUBLIC_GROUNDING_TECHNIQUES.map((technique) => (
                   <div
                     key={technique.id}
-                    className={`card border-l-4 hover:shadow-lg transition-all cursor-pointer group ${
-                      technique.color === 'blue' ? 'border-l-blue-400 hover:border-l-blue-500 bg-blue-50/30 dark:bg-blue-900/20' :
-                      technique.color === 'purple' ? 'border-l-purple-400 hover:border-l-purple-500 bg-purple-50/30 dark:bg-purple-900/20' :
-                      technique.color === 'green' ? 'border-l-green-400 hover:border-l-green-500 bg-green-50/30 dark:bg-green-900/20' :
-                      'border-l-orange-400 hover:border-l-orange-500 bg-orange-50/30 dark:bg-orange-900/20'
-                    }`}
+className={`card transition-all cursor-pointer group`}
                     onClick={() => startExercise(technique)}
                   >
                     <div className="flex items-start gap-4">
@@ -303,7 +298,7 @@ export default function PublicGroundingExercises() {
                 {BATHROOM_TECHNIQUES.map((technique, index) => (
                   <div
                     key={technique.id}
-                    className="card border-l-4 border-l-indigo-400 hover:border-l-indigo-500 bg-indigo-50/30 dark:bg-indigo-900/20 hover:shadow-lg transition-all cursor-pointer group"
+className="card hover:shadow-lg transition-all cursor-pointer group"
                     onClick={() => startExercise(technique)}
                   >
                     <div className="flex items-start gap-4">
@@ -338,7 +333,7 @@ export default function PublicGroundingExercises() {
                 {WORKPLACE_TECHNIQUES.map((technique, index) => (
                   <div
                     key={technique.id}
-                    className="card border-l-4 border-l-teal-400 hover:border-l-teal-500 bg-teal-50/30 dark:bg-teal-900/20 hover:shadow-lg transition-all cursor-pointer group"
+className="card hover:shadow-lg transition-all cursor-pointer group"
                     onClick={() => startExercise(technique)}
                   >
                     <div className="flex items-start gap-4">

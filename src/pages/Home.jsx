@@ -83,8 +83,8 @@ export default function Home() {
           </p>
 
           {/* Immediate Help Section */}
-          <div className="bg-white/90 dark:bg-white/90 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-emerald-200 dark:border-emerald-300 shadow-lg">
-            <h2 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 mb-4">
+          <div className="bg-emerald-50/20 dark:bg-emerald-900/30 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-emerald-200/30 dark:border-emerald-700/30 shadow-lg">
+            <h2 className="text-lg font-semibold text-emerald-900 dark:text-emerald-200 mb-4">
               🆘 Need help right now?
             </h2>
             <div className="flex flex-col sm:flex-row gap-3">
@@ -101,7 +101,7 @@ export default function Home() {
                 🧠 Ground Yourself
               </Link>
             </div>
-            <p className="text-sm text-slate-700 dark:text-slate-700 mt-3">
+            <p className="text-sm text-slate-700 dark:text-slate-300 mt-3">
               Both take less than 2 minutes and can be done anywhere, anytime
             </p>
           </div>
@@ -125,51 +125,51 @@ export default function Home() {
 
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
             {/* Racing Heart */}
-            <div className="bg-white dark:bg-white p-6 rounded-2xl shadow-md border border-red-200 dark:border-red-300 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-red-100 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+            <div className="bg-emerald-50/20 dark:bg-emerald-900/30 backdrop-blur-sm p-6 rounded-2xl border border-red-200/30 dark:border-red-700/30 shadow-lg transition-all">
+              <div className="w-16 h-16 bg-red-100/70 dark:bg-red-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                 <span className="text-3xl">❤️‍🩹</span>
               </div>
-              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 text-center mb-3">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-200 text-center mb-3">
                 Racing Heart & Panic
               </h3>
-              <p className="text-slate-600 dark:text-slate-600 text-center mb-4 text-sm">
+              <p className="text-slate-600 dark:text-slate-300 text-center mb-4 text-sm">
                 When your heart is pounding and you feel like you can't breathe
               </p>
-              <div className="bg-red-50 dark:bg-red-900/20 p-3 rounded-lg">
+              <div className="bg-red-50/60 dark:bg-red-900/30 p-3 rounded-lg backdrop-blur-sm border border-red-200/30 dark:border-red-700/30">
                 <p className="text-xs text-red-800 dark:text-red-200 font-medium">✓ Box breathing slows your heart rate</p>
                 <p className="text-xs text-red-800 dark:text-red-200 font-medium">✓ Cold water activates your parasympathetic nervous system</p>
               </div>
             </div>
 
             {/* Racing Thoughts */}
-            <div className="bg-white dark:bg-white p-6 rounded-2xl shadow-md border border-purple-200 dark:border-purple-300 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-purple-100 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+            <div className="bg-emerald-50/20 dark:bg-emerald-900/30 backdrop-blur-sm p-6 rounded-2xl border border-purple-200/30 dark:border-purple-700/30 shadow-lg transition-all">
+              <div className="w-16 h-16 bg-purple-100/70 dark:bg-purple-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                 <span className="text-3xl">🌪️</span>
               </div>
-              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 text-center mb-3">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-200 text-center mb-3">
                 Racing Thoughts
               </h3>
-              <p className="text-slate-600 dark:text-slate-600 text-center mb-4 text-sm">
+              <p className="text-slate-600 dark:text-slate-300 text-center mb-4 text-sm">
                 When your mind won't stop spinning and you can't focus
               </p>
-              <div className="bg-purple-50 dark:bg-purple-900/20 p-3 rounded-lg">
+              <div className="bg-purple-50/60 dark:bg-purple-900/30 p-3 rounded-lg backdrop-blur-sm border border-purple-200/30 dark:border-purple-700/30">
                 <p className="text-xs text-purple-800 dark:text-purple-200 font-medium">✓ 5-4-3-2-1 grounds you in the present</p>
                 <p className="text-xs text-purple-800 dark:text-purple-200 font-medium">✓ Background sounds give your mind something to focus on</p>
               </div>
             </div>
 
             {/* Feeling Disconnected */}
-            <div className="bg-white dark:bg-white p-6 rounded-2xl shadow-md border border-amber-200 dark:border-amber-300 hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-amber-100 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
+            <div className="bg-emerald-50/20 dark:bg-emerald-900/30 backdrop-blur-sm p-6 rounded-2xl border border-amber-200/30 dark:border-amber-700/30 shadow-lg transition-all">
+              <div className="w-16 h-16 bg-amber-100/70 dark:bg-amber-900/30 rounded-2xl flex items-center justify-center mb-4 mx-auto">
                 <span className="text-3xl">🫥</span>
               </div>
-              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-900 text-center mb-3">
+              <h3 className="text-lg font-semibold text-emerald-900 dark:text-emerald-200 text-center mb-3">
                 Feeling Disconnected
               </h3>
-              <p className="text-slate-600 dark:text-slate-600 text-center mb-4 text-sm">
-                When you feel like you're floating or not really "here"
+              <p className="text-slate-600 dark:text-slate-300 text-center mb-4 text-sm">
+                When you feel like you're floating or not really \"here\"
               </p>
-              <div className="bg-amber-50 dark:bg-amber-900/20 p-3 rounded-lg">
+              <div className="bg-amber-50/60 dark:bg-amber-900/30 p-3 rounded-lg backdrop-blur-sm border border-amber-200/30 dark:border-amber-700/30">
                 <p className="text-xs text-amber-800 dark:text-amber-200 font-medium">✓ Grounding techniques reconnect you with your body</p>
                 <p className="text-xs text-amber-800 dark:text-amber-200 font-medium">✓ Sensory focus brings you back to the present</p>
               </div>
@@ -177,7 +177,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-12">
-            <div className="bg-emerald-50/50 dark:bg-emerald-900/20 rounded-2xl p-6 max-w-3xl mx-auto border border-emerald-200 dark:border-emerald-700">
+          <div className="bg-emerald-50/20 dark:bg-emerald-900/30 backdrop-blur-sm rounded-2xl p-6 max-w-3xl mx-auto border border-emerald-200/30 dark:border-emerald-700/30 shadow-lg">
               <h3 className="text-lg font-semibold text-emerald-800 dark:text-emerald-200 mb-2">
                 🌱 Remember: Anxiety is treatable
               </h3>
