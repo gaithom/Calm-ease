@@ -49,12 +49,12 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
   const [selectedTechnique, setSelectedTechnique] = useState(null);
 
   return (
-    <section className="py-12 bg-gradient-to-r from-red-50/80 via-orange-50/60 to-amber-50/80 dark:from-red-900/10 dark:via-orange-900/10 dark:to-amber-900/10">
+    <section className="py-12 backdrop-blur-sm bg-white/20 dark:bg-slate-800/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Active Quick Calm Feedback */}
         {quickCalmActive && (
-          <div className="mb-8 p-6 bg-gradient-to-r from-green-100 to-emerald-100 dark:from-green-900/30 dark:to-emerald-900/30 rounded-2xl border border-green-200 dark:border-green-700">
+          <div className="mb-8 p-6 backdrop-blur-sm bg-white/30 dark:bg-slate-800/30 rounded-2xl border border-white/20 dark:border-white/10 shadow-lg">
             <div className="text-center">
               <div className="text-3xl mb-3">🌱</div>
               <h3 className="text-xl font-semibold text-green-800 dark:text-green-200 mb-2">
@@ -65,7 +65,7 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3 text-sm">
                 {COMFORT_REMINDERS.map((reminder, index) => (
-                  <div key={index} className="p-3 bg-white/60 dark:bg-slate-800/60 rounded-lg">
+                  <div key={index} className="p-3 backdrop-blur-sm bg-white/30 dark:bg-slate-800/30 rounded-lg border border-white/20 dark:border-white/10">
                     <p className="text-green-800 dark:text-green-200">{reminder}</p>
                   </div>
                 ))}
@@ -74,7 +74,6 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
           </div>
         )}
 
-        {/* Main Emergency Section */}
         {!quickCalmActive && (
           <>
             <div className="text-center mb-8">
@@ -96,8 +95,8 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
               
               {/* Immediate (0-30 seconds) */}
-              <div className="bg-white dark:bg-white rounded-2xl p-6 border border-red-300 dark:border-red-400 shadow-md">
-                <h3 className="text-xl font-semibold text-red-800 dark:text-red-800 mb-4 flex items-center gap-2">
+              <div className="backdrop-blur-sm bg-white/20 dark:bg-slate-800/30 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg">
+                <h3 className="text-xl font-semibold text-red-700 dark:text-red-300 mb-4 flex items-center gap-2">
                   <span className="text-2xl">🚨</span>
                   Right Now (0-30 seconds)
                 </h3>
@@ -106,16 +105,16 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
                   {CRISIS_TECHNIQUES.filter(t => t.urgency === 'immediate').map((technique) => (
                     <div
                       key={technique.id}
-                      className="p-4 bg-red-50/50 dark:bg-red-900/20 rounded-lg border border-red-200 dark:border-red-700 cursor-pointer hover:bg-red-100/50 dark:hover:bg-red-900/30 transition-colors"
+                      className="p-4 backdrop-blur-sm bg-white/30 dark:bg-slate-800/30 rounded-lg border border-white/20 dark:border-white/10 cursor-pointer hover:bg-white/40 dark:hover:bg-slate-800/40 transition-colors"
                       onClick={() => setSelectedTechnique(technique)}
                     >
                       <div className="flex items-start gap-3">
                         <div className="text-2xl">{technique.icon}</div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-slate-800 dark:text-slate-800">
+                          <h4 className="font-semibold text-slate-800 dark:text-white">
                             {technique.name}
                           </h4>
-                          <p className="text-sm text-slate-600 dark:text-slate-600 mb-1">
+                          <p className="text-sm text-slate-700 dark:text-slate-300 mb-1">
                             {technique.description}
                           </p>
                           <div className="text-xs text-red-600 dark:text-red-400">
@@ -129,8 +128,8 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
               </div>
 
               {/* Guided (30s - 2min) */}
-              <div className="bg-white dark:bg-white rounded-2xl p-6 border border-blue-300 dark:border-blue-400 shadow-md">
-                <h3 className="text-xl font-semibold text-blue-800 dark:text-blue-800 mb-4 flex items-center gap-2">
+              <div className="backdrop-blur-sm bg-white/20 dark:bg-slate-800/30 rounded-2xl p-6 border border-white/20 dark:border-white/10 shadow-lg">
+                <h3 className="text-xl font-semibold text-blue-700 dark:text-blue-300 mb-4 flex items-center gap-2">
                   <span className="text-2xl">🧘</span>
                   Guided Techniques (30s - 2min)
                 </h3>
@@ -140,15 +139,15 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
                     <Link
                       key={technique.id}
                       to={technique.link}
-                      className="block p-4 bg-blue-50/50 dark:bg-blue-900/20 rounded-lg border border-blue-200 dark:border-blue-700 hover:bg-blue-100/50 dark:hover:bg-blue-900/30 transition-colors"
+                      className="block p-4 backdrop-blur-sm bg-white/30 dark:bg-slate-800/30 rounded-lg border border-white/20 dark:border-white/10 hover:bg-white/40 dark:hover:bg-slate-800/40 transition-colors"
                     >
                       <div className="flex items-start gap-3">
                         <div className="text-2xl">{technique.icon}</div>
                         <div className="flex-1">
-                          <h4 className="font-semibold text-slate-800 dark:text-slate-800">
+                          <h4 className="font-semibold text-slate-800 dark:text-white">
                             {technique.name}
                           </h4>
-                          <p className="text-sm text-slate-600 dark:text-slate-600 mb-1">
+                          <p className="text-sm text-slate-700 dark:text-slate-300 mb-1">
                             {technique.description}
                           </p>
                           <div className="flex items-center justify-between">
@@ -168,17 +167,17 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
             </div>
 
             {/* Professional Help Notice */}
-            <div className="bg-purple-50/50 dark:bg-purple-900/20 rounded-2xl p-6 border border-purple-200 dark:border-purple-700 text-center">
+            <div className="backdrop-blur-sm bg-white/20 dark:bg-slate-800/30 rounded-2xl p-6 border border-white/20 dark:border-white/10 text-center shadow-lg">
               <div className="text-2xl mb-3">💜</div>
-              <h3 className="text-lg font-semibold text-purple-800 dark:text-purple-200 mb-2">
+              <h3 className="text-lg font-semibold text-purple-700 dark:text-purple-300 mb-2">
                 If you're having thoughts of self-harm
               </h3>
-              <p className="text-purple-700 dark:text-purple-300 mb-4">
+              <p className="text-purple-600 dark:text-purple-200 mb-4">
                 Please reach out for professional support immediately.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center items-center text-sm">
-                <div className="font-medium">Crisis Text Line: Text HOME to 741741</div>
-                <div className="font-medium">National Suicide Prevention Lifeline: 988</div>
+                <div className="font-medium text-purple-800 dark:text-purple-100">Crisis Text Line: Text HOME to 741741</div>
+                <div className="font-medium text-purple-800 dark:text-purple-100">National Suicide Prevention Lifeline: 988</div>
               </div>
             </div>
           </>
@@ -186,14 +185,14 @@ export default function EmergencyAccessSection({ quickCalmActive }) {
 
         {/* Selected Technique Detail Modal/Overlay */}
         {selectedTechnique && (
-          <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-            <div className="bg-white dark:bg-slate-800 rounded-2xl p-6 max-w-md w-full">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4 z-50">
+            <div className="backdrop-blur-sm bg-white/70 dark:bg-slate-800/80 rounded-2xl p-6 max-w-md w-full border border-white/20 dark:border-white/10 shadow-2xl">
               <div className="text-center mb-6">
                 <div className="text-4xl mb-3">{selectedTechnique.icon}</div>
                 <h3 className="text-xl font-semibold text-slate-800 dark:text-white">
                   {selectedTechnique.name}
                 </h3>
-                <p className="text-slate-600 dark:text-slate-300 mt-2">
+                <p className="text-slate-700 dark:text-slate-300 mt-2">
                   {selectedTechnique.description}
                 </p>
               </div>

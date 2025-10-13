@@ -1,115 +1,243 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSound } from '../context/SoundContext';
-import EmergencyAccessSection from '../components/EmergencyAccessSection';
-import PersonalizedDashboard from '../components/PersonalizedDashboard';
-import backgroundImage from '../assets/background2.png';
+import EmergencyMode from '../components/EmergencyMode';
+import calmTheme from '../theme';
 
 export default function Home() {
-  const { favorites, backgroundSounds } = useSound();
-  const favoriteSounds = backgroundSounds.filter(s => favorites.includes(s.id));
-  const [quickCalmActive, setQuickCalmActive] = useState(false);
-
-  const startQuickCalm = () => {
-    setQuickCalmActive(true);
-    setTimeout(() => {
-      setQuickCalmActive(false);
-    }, 60000); // 1 minute
-  };
+  const [emergencyMode, setEmergencyMode] = useState(false);
+  const [showMoreOptions, setShowMoreOptions] = useState(false);
+  
+  if (emergencyMode) {
+    return <EmergencyMode onExit={() => setEmergencyMode(false)} />;
+  }
 
   return (
-    <div className="min-h-screen relative">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
+    <div style={{
+      minHeight: '100vh',
+      backgroundColor: calmTheme.colors.background.light,
+      color: calmTheme.colors.text.light,
+      fontFamily: calmTheme.fonts.body,
+      position: 'relative',
+      overflowX: 'hidden',
+    }}>
+      {/* Floating Emergency Button */}
+      <button 
+        onClick={() => setEmergencyMode(true)}
         style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
+          position: 'fixed',
+          bottom: '30px',
+          right: '30px',
+          width: '80px',
+          height: '80px',
+          borderRadius: '50%',
+          backgroundColor: calmTheme.colors.primary[500],
+          color: 'white',
+          border: 'none',
+          boxShadow: calmTheme.shadows.lg,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          zIndex: 100,
+          fontSize: '14px',
+          fontWeight: 500,
+          transition: 'all 0.3s ease',
         }}
+        onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+        onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
       >
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50 dark:bg-black/70 z-10"></div>
-      </div>
-      
-      {/* Content */}
-      <div className="relative z-20">
-        {/* Floating Emergency Button */}
-        <div className="fixed bottom-6 right-6 z-50">
-          <button 
-            className={`w-16 h-16 rounded-full text-white shadow-lg transition-all duration-200 flex flex-col items-center justify-center text-xs font-medium ${
-              quickCalmActive 
-                ? 'bg-green-500 hover:bg-green-600 animate-pulse' 
-                : 'bg-red-500 hover:bg-red-600'
-            }`}
-            title={quickCalmActive ? 'Quick calm active...' : 'Emergency calm - instant help'}
-            onClick={quickCalmActive ? () => setQuickCalmActive(false) : startQuickCalm}
-        >
-          {quickCalmActive ? (
-            <>
-              <span className="text-lg">✓</span>
-              <span>OK</span>
-            </>
-          ) : (
-            <>
-              <span className="text-lg">🆘</span>
-              <span>HELP</span>
-            </>
-          )}
-        </button>
-      </div>
+        <span style={{ fontSize: '24px', marginBottom: '4px' }}>🆘</span>
+        <span>I need help</span>
+      </button>
 
-      {/* Gentle, Supportive Hero Section */}
-      <section className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden bg-gradient-to-br from-emerald-50/90 via-white/80 to-emerald-100/60 dark:from-emerald-900/30 dark:via-emerald-800/20 dark:to-emerald-900/40 transition-colors duration-300">
-        <div className="relative max-w-6xl mx-auto text-center">
-          <div className="inline-flex items-center gap-2 mb-6 px-6 py-3 rounded-full bg-emerald-100/70 dark:bg-emerald-800/40 text-emerald-800 dark:text-emerald-200 shadow-sm">
-            <span className="text-xl">🤗</span>
-            <span className="font-medium">You're not alone in this</span>
+      {/* Main Content */}
+      <div style={{
+        maxWidth: '800px',
+        margin: '0 auto',
+        padding: '40px 20px',
+        textAlign: 'center',
+      }}>
+        {/* Header */}
+        <header style={{ marginBottom: '60px' }}>
+          <div style={{
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '10px',
+            padding: '8px 20px',
+            borderRadius: '20px',
+            backgroundColor: calmTheme.colors.primary[100],
+            color: calmTheme.colors.primary[700],
+            marginBottom: '20px',
+            fontSize: '15px',
+          }}>
+            <span>🤗</span>
+            <span>You're not alone</span>
           </div>
           
-          <h1 className="text-4xl md:text-6xl font-light text-slate-800 dark:text-emerald-50 mb-6 leading-relaxed">
-            When anxiety feels overwhelming,
-            <br />
-            <span className="font-semibold bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
-              we're here to help
-            </span>
+          <h1 style={{
+            fontSize: '2.5rem',
+            fontWeight: 300,
+            color: calmTheme.colors.text.light,
+            marginBottom: '20px',
+            lineHeight: 1.3,
+          }}>
+            Calm moments,<br />
+            <span style={{
+              fontWeight: 500,
+              background: `linear-gradient(135deg, ${calmTheme.colors.primary[500]}, ${calmTheme.colors.secondary[500]})`,
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+            }}>one breath at a time</span>
           </h1>
           
-          <p className="text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-8 max-w-4xl mx-auto leading-relaxed font-light">
-            Simple, gentle tools designed specifically for anxiety relief. 
-            <br className="hidden md:block" />
-            No complicated setups, no overwhelming choices - just immediate support when you need it most.
+          <p style={{
+            fontSize: '1.1rem',
+            color: calmTheme.colors.text.light,
+            opacity: 0.8,
+            maxWidth: '600px',
+            margin: '0 auto',
+            lineHeight: 1.6,
+          }}>
+            Simple, gentle tools designed specifically for anxiety relief.
           </p>
+        </header>
 
-          {/* Immediate Help Section */}
-          <div className="bg-emerald-50/20 dark:bg-emerald-900/30 backdrop-blur-sm rounded-2xl p-6 mb-12 max-w-2xl mx-auto border border-emerald-200/30 dark:border-emerald-700/30 shadow-lg">
-            <h2 className="text-lg font-semibold text-emerald-900 dark:text-emerald-200 mb-4">
-              🆘 Need help right now?
-            </h2>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                to="/relax"
-                className="flex-1 btn btn-primary text-lg py-3 px-6 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
-              >
-                🥰 Start Breathing
-              </Link>
-              <Link
-                to="/grounding"
-                className="flex-1 btn btn-secondary text-lg py-3 px-6 rounded-xl shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all"
-              >
-                🧠 Ground Yourself
-              </Link>
-            </div>
-            <p className="text-sm text-slate-700 dark:text-slate-300 mt-3">
-              Both take less than 2 minutes and can be done anywhere, anytime
-            </p>
-          </div>
+        {/* Main Actions */}
+        <div style={{
+          display: 'grid',
+          gap: '20px',
+          marginBottom: '60px',
+        }}>
+          <Link
+            to="/relax"
+            style={{
+              display: 'block',
+              backgroundColor: calmTheme.colors.primary[500],
+              color: 'white',
+              padding: '20px',
+              borderRadius: calmTheme.radii.lg,
+              textDecoration: 'none',
+              fontSize: '1.2rem',
+              fontWeight: 500,
+              transition: 'all 0.2s ease',
+              boxShadow: calmTheme.shadows.md,
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+          >
+            🌬️ Start Breathing Exercise
+          </Link>
+          
+          <Link
+            to="/grounding"
+            style={{
+              display: 'block',
+              backgroundColor: calmTheme.colors.secondary[500],
+              color: 'white',
+              padding: '20px',
+              borderRadius: calmTheme.radii.lg,
+              textDecoration: 'none',
+              fontSize: '1.2rem',
+              fontWeight: 500,
+              transition: 'all 0.2s ease',
+              boxShadow: calmTheme.shadows.md,
+            }}
+            onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-2px)'}
+            onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+          >
+            🌍 Grounding Exercise
+          </Link>
         </div>
-      </section>
 
-      {/* Emergency Access Section */}
-      <EmergencyAccessSection quickCalmActive={quickCalmActive} />
+        {/* More Options */}
+        <div>
+          <button 
+            onClick={() => setShowMoreOptions(!showMoreOptions)}
+            style={{
+              backgroundColor: 'transparent',
+              border: `1px solid ${calmTheme.colors.primary[300]}`,
+              color: calmTheme.colors.primary[600],
+              padding: '12px 24px',
+              borderRadius: calmTheme.radii.md,
+              fontSize: '1rem',
+              cursor: 'pointer',
+              marginBottom: '30px',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              margin: '0 auto 30px',
+            }}
+          >
+            {showMoreOptions ? 'Show Less' : 'More Options'}
+            <span style={{
+              transform: showMoreOptions ? 'rotate(180deg)' : 'rotate(0)',
+              transition: 'transform 0.3s ease',
+              display: 'inline-block',
+            }}>▼</span>
+          </button>
+
+          {showMoreOptions && (
+            <div style={{
+              backgroundColor: 'rgba(255, 255, 255, 0.5)',
+              padding: '20px',
+              borderRadius: calmTheme.radii.lg,
+              marginBottom: '40px',
+              textAlign: 'left',
+            }}>
+              <h3 style={{
+                fontSize: '1.1rem',
+                marginBottom: '15px',
+                color: calmTheme.colors.primary[700],
+              }}>Additional Resources</h3>
+              <ul style={{
+                listStyle: 'none',
+                padding: 0,
+                margin: 0,
+                display: 'grid',
+                gap: '12px',
+              }}>
+                <li>
+                  <a href="#" style={{
+                    color: calmTheme.colors.primary[600],
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}>
+                    <span>📚</span>
+                    <span>Guided Meditations</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style={{
+                    color: calmTheme.colors.primary[600],
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}>
+                    <span>🎵</span>
+                    <span>Calming Sounds</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" style={{
+                    color: calmTheme.colors.primary[600],
+                    textDecoration: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                  }}>
+                    <span>📱</span>
+                    <span>Emergency Contacts</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          )}
+        </div>
+      </div>
 
       {/* Anxiety-Specific Support Section */}
       <section className="py-16 bg-gradient-to-br from-emerald-50/80 to-white dark:from-emerald-900/40 dark:to-emerald-800/30">
@@ -190,9 +318,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Personalized Dashboard */}
-      <PersonalizedDashboard favoriteSounds={favoriteSounds} />
-
       {/* Supportive Final CTA */}
       <section className="py-16 bg-gradient-to-r from-emerald-100/90 via-white/80 to-emerald-50/90 dark:from-emerald-900/40 dark:via-emerald-800/30 dark:to-emerald-900/40">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -223,7 +348,6 @@ export default function Home() {
           </p>
         </div>
       </section>
-      </div>
     </div>
   );
 }

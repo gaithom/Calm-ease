@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import GroundingExercise from '../components/GroundingExercise';
 import EmergencyGroundingSection from '../components/EmergencyGroundingSection';
 import PublicGroundingExercises from '../components/PublicGroundingExercises';
-import backgroundImage from '../assets/background2.png';
 
 export default function Grounding() {
   const [quickGroundingActive, setQuickGroundingActive] = useState(false);
@@ -19,17 +18,9 @@ export default function Grounding() {
   return (
     <div className="min-h-screen relative">
       {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-fixed z-0"
-        style={{
-          backgroundImage: `url(${backgroundImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundAttachment: 'fixed'
-        }}
-      >
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/50 dark:bg-black/70 z-10"></div>
+      <div className="absolute inset-0 bg-emerald-50 dark:bg-emerald-900 z-0">
+        {/* Subtle Overlay */}
+        <div className="absolute inset-0 bg-black/10 dark:bg-black/20 z-10"></div>
       </div>
 
       {/* Content */}

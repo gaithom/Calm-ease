@@ -18,12 +18,20 @@ export function SoundProvider({ children }) {
   });
   const [theme, setTheme] = useState(() => localStorage.getItem('calmease:theme') || 'light');
 
-  // Available background sounds
+  // Available background sounds - natural and realistic options
   const backgroundSounds = useMemo(() => ([
-    { id: 'piano', name: 'Soft Piano', src: '/sounds/soft-piano.wav' },
-    { id: 'ocean', name: 'Ocean Waves', src: '/sounds/ocean.wav' },
-    { id: 'rain', name: 'Rain', src: '/sounds/rain.wav' },
-    { id: 'forest', name: 'Forest', src: '/sounds/forest.wav' },
+    { id: 'ocean-waves', name: 'Ocean Waves', src: '/sounds/ocean-waves.wav', category: 'water' },
+    { id: 'gentle-rain', name: 'Gentle Rain', src: '/sounds/gentle-rain.wav', category: 'rain' },
+    { id: 'forest-ambience', name: 'Forest Ambience', src: '/sounds/forest-ambience.wav', category: 'nature' },
+    { id: 'mountain-stream', name: 'Mountain Stream', src: '/sounds/mountain-stream.wav', category: 'water' },
+    { id: 'summer-meadow', name: 'Summer Meadow', src: '/sounds/summer-meadow.wav', category: 'nature' },
+    { id: 'thunderstorm', name: 'Distant Thunderstorm', src: '/sounds/thunderstorm.wav', category: 'rain' },
+    { id: 'beach-waves', name: 'Beach Waves', src: '/sounds/beach-waves.wav', category: 'water' },
+    { id: 'autumn-forest', name: 'Autumn Forest', src: '/sounds/autumn-forest.wav', category: 'nature' },
+    { id: 'night-crickets', name: 'Night Crickets', src: '/sounds/night-crickets.wav', category: 'night' },
+    { id: 'mountain-wind', name: 'Mountain Wind', src: '/sounds/mountain-wind.wav', category: 'wind' },
+    { id: 'tropical-jungle', name: 'Tropical Jungle', src: '/sounds/tropical-jungle.wav', category: 'nature' },
+    { id: 'winter-wind', name: 'Winter Wind', src: '/sounds/winter-wind.wav', category: 'wind' },
   ]), []);
 
   // Apply volumes and loop behavior

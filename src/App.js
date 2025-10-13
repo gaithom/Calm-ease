@@ -19,13 +19,13 @@ function ThemeWrapper({ children }) {
     // Set theme class on html element
     document.documentElement.setAttribute('data-theme', theme);
     
-    // Set dark mode class
+    // Set dark mode class and background color
     if (darkMode) {
       document.documentElement.classList.add('dark');
-    document.documentElement.style.backgroundColor = '#064e3b'; // Dark emerald background for the entire page
+      document.body.style.backgroundColor = '#0f172a'; // Dark background for the entire page
     } else {
       document.documentElement.classList.remove('dark');
-    document.documentElement.style.backgroundColor = '#f0fdfa'; // Light emerald background for the entire page
+      document.body.style.backgroundColor = '#f8fafc'; // Light background for the entire page
     }
     
     // Update CSS variables based on theme
