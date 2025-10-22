@@ -16,6 +16,17 @@ export const ThemeProvider = ({ children }) => {
   const [darkMode, setDarkModeState] = useState(false);
   const [isSystemDark, setIsSystemDark] = useState(false);
 
+  // Apply theme and update DOM
+  const applyTheme = useCallback((theme, isDark) => {
+    // Update document attributes
+    document.documentElement.setAttribute('data-theme', theme);
+    document.documentElement.classList.toggle('dark', isDark);
+    
+    // Update meta theme-color for mobile browsers
+    const themeColor = isDark ? '#064e3b' : '#d1fae5';
+    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
+  }, []);
+
   // Initialize theme and dark mode
   useEffect(() => {
     // Check for saved theme preference or use default
@@ -50,18 +61,7 @@ export const ThemeProvider = ({ children }) => {
     return () => {
       mediaQuery.removeEventListener('change', handleSystemThemeChange);
     };
-  }, []);
-
-  // Apply theme and update DOM
-  const applyTheme = useCallback((theme, isDark) => {
-    // Update document attributes
-    document.documentElement.setAttribute('data-theme', theme);
-    document.documentElement.classList.toggle('dark', isDark);
-    
-    // Update meta theme-color for mobile browsers
-    const themeColor = isDark ? '#064e3b' : '#d1fae5';
-    document.querySelector('meta[name="theme-color"]')?.setAttribute('content', themeColor);
-  }, []);
+  }, [applyTheme]);
 
   // Update theme
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import EmergencyAccessSection from '../components/EmergencyAccessSection';
 import QuickReliefSection from '../components/QuickReliefSection';
 import PersonalizedDashboard from '../components/PersonalizedDashboard';

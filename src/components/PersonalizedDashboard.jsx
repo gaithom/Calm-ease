@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { useSound } from '../context/SoundContext';
 
 const RECENT_ACTIVITIES = [
   { type: 'breathing', name: '4-7-8 Breathing', time: '2 hours ago', duration: '3 min', icon: '🫁' },
