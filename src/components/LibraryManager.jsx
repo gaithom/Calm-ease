@@ -219,12 +219,12 @@ export default function LibraryManager() {
             ) : (
               <div className="space-y-3">
                 {items.map((it) => (
-                  <div key={it.id} className="group flex items-center justify-between gap-4 p-4 rounded-xl bg-white/80 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 hover:shadow-md transition-all">
+                  <div key={it.id} className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-white/80 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 hover:shadow-md transition-all">
                     <div className="flex items-center gap-4 flex-1 min-w-0">
                       <div className="text-2xl">{it.kind === 'voice' ? '🎤' : '🎵'}</div>
                       <div className="flex-1 min-w-0">
                         <div className="font-medium text-slate-800 dark:text-slate-200 truncate">{it.name}</div>
-                        <div className="flex items-center gap-3 text-xs text-slate-500 dark:text-slate-400">
+                        <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
                           <span className={`px-2 py-1 rounded-full ${
                             it.kind === 'voice' 
                               ? 'bg-purple-100 dark:bg-purple-800/50 text-purple-700 dark:text-purple-300'
@@ -236,9 +236,9 @@ export default function LibraryManager() {
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center gap-2 w-full sm:w-auto sm:opacity-0 group-hover:opacity-100 transition-opacity">
                       <button 
-                        className="btn btn-sm bg-emerald-600 hover:bg-emerald-700 text-white border-0 rounded-lg" 
+                        className="btn btn-sm flex-grow sm:flex-grow-0 bg-emerald-600 hover:bg-emerald-700 text-white border-0 rounded-lg" 
                         onClick={() => playItem(it)}
                       >
                         ▶️ Play
