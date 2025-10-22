@@ -2,32 +2,24 @@ import React, { createContext, useContext, useEffect, useState, useCallback } fr
 
 // Theme types
 export const THEMES = {
-  GREEN: 'green',
-  TEAL: 'teal',
-  BLUE: 'blue'
+  GREEN: 'green'
 };
 
 // Context type definition
 const ThemeContext = createContext({
-  theme: THEMES.GREEN,
-  setTheme: () => {},
   darkMode: false,
   toggleDarkMode: () => {},
   isSystemDark: false
 });
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setThemeState] = useState(THEMES.GREEN);
   const [darkMode, setDarkModeState] = useState(false);
   const [isSystemDark, setIsSystemDark] = useState(false);
-  const [lastLightTheme, setLastLightTheme] = useState(THEMES.GREEN);
 
   // Initialize theme and dark mode
   useEffect(() => {
     // Check for saved theme preference or use default
-    const savedTheme = localStorage.getItem('theme');
     const savedDarkMode = localStorage.getItem('darkMode');
-    const savedLastLightTheme = localStorage.getItem('lastLightTheme');
 
     // Check system dark mode preference
     const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -38,34 +30,9 @@ export const ThemeProvider = ({ children }) => {
       ? savedDarkMode === 'true'
       : systemPrefersDark;
 
-    if (initialDarkMode) {
-      // When starting in dark mode, force Emerald and remember previous light theme
-      const previousLight = savedLastLightTheme || savedTheme || THEMES.GREEN;
-      setLastLightTheme(previousLight);
-      localStorage.setItem('lastLightTheme', previousLight);
-
-      setThemeState(THEMES.GREEN);
-      localStorage.setItem('theme', THEMES.GREEN);
-
-      setDarkModeState(true);
-      localStorage.setItem('darkMode', 'true');
-
-      applyTheme(THEMES.GREEN, true);
-    } else {
-      // In light mode, use saved theme or default
-      const initialTheme = savedTheme || THEMES.GREEN;
-      const lightTheme = savedLastLightTheme || initialTheme;
-      setLastLightTheme(lightTheme);
-      localStorage.setItem('lastLightTheme', lightTheme);
-
-      setThemeState(initialTheme);
-      localStorage.setItem('theme', initialTheme);
-
-      setDarkModeState(false);
-      localStorage.setItem('darkMode', 'false');
-
-      applyTheme(initialTheme, false);
-    }
+    setDarkModeState(initialDarkMode);
+    localStorage.setItem('darkMode', initialDarkMode.toString());
+    applyTheme(THEMES.GREEN, initialDarkMode);
 
     // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
@@ -74,7 +41,7 @@ export const ThemeProvider = ({ children }) => {
       setIsSystemDark(newSystemDark);
       // Only update dark mode if user hasn't explicitly set a preference
       if (localStorage.getItem('darkMode') === null) {
-        setDarkMode(newSystemDark);
+        setDarkModeState(newSystemDark);
       }
     };
 
@@ -97,95 +64,21 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   // Update theme
-  const setTheme = useCallback((newTheme) => {
-    if (!Object.values(THEMES).includes(newTheme)) {
-      console.warn(`Invalid theme: ${newTheme}. Using default.`);
-      newTheme = THEMES.GREEN;
-    }
-
-    if (darkMode) {
-      // While in dark mode, always keep Emerald active. Remember user's light theme choice for later.
-      setLastLightTheme(newTheme);
-      localStorage.setItem('lastLightTheme', newTheme);
-      // Do not change the active theme or re-apply; dark stays Emerald.
-      return;
-    }
-
-    // In light mode, actively change theme and remember it as lastLightTheme
-    setThemeState(newTheme);
-    setLastLightTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
-    localStorage.setItem('lastLightTheme', newTheme);
-    applyTheme(newTheme, false);
-  }, [darkMode, applyTheme]);
 
   // Toggle dark mode
   const toggleDarkMode = useCallback(() => {
     const newDarkMode = !darkMode;
-
-    if (newDarkMode) {
-      // Going to dark: force Emerald as active theme, remember current light theme
-      setLastLightTheme((prev) => {
-        const remember = prev || theme || THEMES.GREEN;
-        localStorage.setItem('lastLightTheme', remember);
-        return remember;
-      });
-      setThemeState(THEMES.GREEN);
-      localStorage.setItem('theme', THEMES.GREEN);
-
-      setDarkModeState(true);
-      localStorage.setItem('darkMode', 'true');
-
-      applyTheme(THEMES.GREEN, true);
-    } else {
-      // Returning to light: restore last light theme
-      const restore = localStorage.getItem('lastLightTheme') || lastLightTheme || THEMES.GREEN;
-      setThemeState(restore);
-      localStorage.setItem('theme', restore);
-
-      setDarkModeState(false);
-      localStorage.setItem('darkMode', 'false');
-
-      applyTheme(restore, false);
-    }
-  }, [darkMode, theme, lastLightTheme, applyTheme]);
+    setDarkModeState(newDarkMode);
+    localStorage.setItem('darkMode', newDarkMode.toString());
+    applyTheme(THEMES.GREEN, newDarkMode);
+  }, [darkMode, applyTheme]);
   
   // Set dark mode directly
-  const setDarkMode = useCallback((isDark) => {
-    if (isDark) {
-      // Enable dark: force Emerald theme
-      setLastLightTheme((prev) => {
-        const remember = prev || theme || THEMES.GREEN;
-        localStorage.setItem('lastLightTheme', remember);
-        return remember;
-      });
-      setThemeState(THEMES.GREEN);
-      localStorage.setItem('theme', THEMES.GREEN);
-
-      setDarkModeState(true);
-      localStorage.setItem('darkMode', 'true');
-
-      applyTheme(THEMES.GREEN, true);
-    } else {
-      // Disable dark: restore last light theme
-      const restore = localStorage.getItem('lastLightTheme') || lastLightTheme || THEMES.GREEN;
-      setThemeState(restore);
-      localStorage.setItem('theme', restore);
-
-      setDarkModeState(false);
-      localStorage.setItem('darkMode', 'false');
-
-      applyTheme(restore, false);
-    }
-  }, [theme, lastLightTheme, applyTheme]);
 
   // Context value
   const contextValue = {
-    theme,
-    setTheme,
     darkMode,
     toggleDarkMode,
-    setDarkMode,
     isSystemDark
   };
 

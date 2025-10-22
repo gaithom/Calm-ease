@@ -32,7 +32,7 @@ const SUGGESTED_ACTIVITIES = [
   }
 ];
 
-export default function PersonalizedDashboard({ favoriteSounds }) {
+export default function PersonalizedDashboard({ favoriteSounds = [] }) {
   const [currentTime, setCurrentTime] = useState(new Date());
 
   useEffect(() => {

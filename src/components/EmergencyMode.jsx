@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import calmTheme from '../theme';
 
 const EmergencyMode = ({ onExit }) => {
   const [breathing, setBreathing] = useState(false);
   const [step, setStep] = useState(0);
-  const navigate = useNavigate();
   const steps = [
     "You're safe right now.",
     "Breathe in slowly...",
@@ -24,93 +21,29 @@ const EmergencyMode = ({ onExit }) => {
   }, [breathing, steps.length]);
 
   return (
-    <div style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: calmTheme.colors.background.light,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      zIndex: 1000,
-      padding: '20px',
-      textAlign: 'center',
-    }}>
-      <div style={{
-        maxWidth: '500px',
-        width: '100%',
-      }}>
-        <div style={{
-          width: '150px',
-          height: '150px',
-          borderRadius: '50%',
-          backgroundColor: breathing ? calmTheme.colors.primary[200] : calmTheme.colors.primary[100],
-          margin: '0 auto 40px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          transition: 'all 1.5s ease-in-out',
-          transform: breathing ? 'scale(1.1)' : 'scale(1)',
-          boxShadow: '0 10px 25px rgba(0, 0, 0, 0.05)',
-        }}>
-          <span style={{
-            fontSize: '24px',
-            color: calmTheme.colors.primary[700],
-          }}>
+    <div className="fixed inset-0 bg-background-light flex flex-col items-center justify-center z-50 p-5 text-center">
+      <div className="max-w-md w-full">
+        <div
+          className={`w-36 h-36 rounded-full mx-auto mb-10 flex items-center justify-center transition-all duration-1000 ease-in-out shadow-md ${breathing ? 'bg-primary-200 scale-110' : 'bg-primary-100 scale-100'}`}>
+          <span className="text-4xl text-primary-700">
             {breathing ? '🌬️' : '😌'}
           </span>
         </div>
 
-        <h2 style={{
-          fontSize: '24px',
-          marginBottom: '20px',
-          color: calmTheme.colors.text.light,
-          fontWeight: 500,
-        }}>
+        <h2 className="text-2xl mb-5 text-text-light font-medium">
           {steps[step]}
         </h2>
 
-        <div style={{
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '15px',
-          width: '100%',
-          maxWidth: '300px',
-          margin: '0 auto',
-        }}>
+        <div className="flex flex-col gap-4 max-w-xs mx-auto">
           <button
             onClick={() => setBreathing(!breathing)}
-            style={{
-              backgroundColor: breathing ? calmTheme.colors.primary[500] : calmTheme.colors.primary[400],
-              color: 'white',
-              border: 'none',
-              padding: '16px',
-              borderRadius: calmTheme.radii.md,
-              fontSize: '18px',
-              fontWeight: 500,
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-          >
+            className={`text-white border-none px-4 py-4 rounded-md text-lg font-medium cursor-pointer transition-all duration-200 ${breathing ? 'bg-primary-500' : 'bg-primary-400'}`}>
             {breathing ? 'Pause Breathing' : 'Start Calm Breathing'}
           </button>
 
           <button
             onClick={onExit}
-            style={{
-              backgroundColor: 'transparent',
-              color: calmTheme.colors.primary[600],
-              border: `1px solid ${calmTheme.colors.primary[300]}`,
-              padding: '12px',
-              borderRadius: calmTheme.radii.md,
-              fontSize: '16px',
-              cursor: 'pointer',
-              transition: 'all 0.2s ease',
-            }}
-          >
+            className="bg-transparent text-primary-600 border border-primary-300 px-4 py-3 rounded-md text-base cursor-pointer transition-all duration-200">
             Exit Emergency Mode
           </button>
         </div>
