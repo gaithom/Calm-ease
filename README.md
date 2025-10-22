@@ -1,4 +1,5 @@
-# CalmEase
+# CalmSpace
+
 
 CalmEase is a simple, user-friendly React app to help manage anxiety with:
 
