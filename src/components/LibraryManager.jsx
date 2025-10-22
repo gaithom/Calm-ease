@@ -107,7 +107,7 @@ export default function LibraryManager() {
         Manage Your <span className="font-semibold text-emerald-700 dark:text-emerald-300">Audio Collection</span>
       </h2>
       
-      <div className="inline-flex items-center gap-4 p-2 rounded-2xl bg-slate-100/70 dark:bg-slate-700/40 border border-slate-200/50 dark:border-slate-600/50">
+      <div className="inline-flex flex-wrap justify-center items-center gap-4 p-2 rounded-2xl bg-slate-100/70 dark:bg-slate-700/40 border border-slate-200/50 dark:border-slate-600/50">
         <label className="inline-flex items-center gap-3 px-4 py-2 rounded-xl cursor-pointer transition-all hover:bg-white/70 dark:hover:bg-slate-600/50 text-sm font-medium">
           <input 
             type="radio" 
@@ -138,7 +138,7 @@ export default function LibraryManager() {
     <section className="bg-white/70 dark:bg-slate-800/50 rounded-3xl p-8 border border-slate-200/60 dark:border-slate-700/50 backdrop-blur-sm shadow-lg" aria-label="Your personal audio library">
       {header}
 
-      <div className="grid lg:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div className="space-y-6">
           <div className="bg-gradient-to-br from-emerald-50/70 to-sky-50/70 dark:from-emerald-900/20 dark:to-sky-900/20 rounded-2xl p-6 border border-emerald-200/50 dark:border-emerald-700/30">
             <div className="flex items-center gap-3 mb-4">

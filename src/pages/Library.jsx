@@ -34,7 +34,7 @@ export default function Library() {
               <h2 className="text-xl font-semibold text-slate-800 dark:text-slate-200">Privacy & Security</h2>
             </div>
             
-            <div className="grid md:grid-cols-3 gap-6 text-sm">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-sm">
               <div className="text-center p-4 rounded-xl bg-emerald-50/50 dark:bg-emerald-900/20 border border-emerald-200/50 dark:border-emerald-700/50">
                 <div className="text-2xl mb-3">💾</div>
                 <h3 className="font-medium text-emerald-800 dark:text-emerald-200 mb-2">Local Storage</h3>
