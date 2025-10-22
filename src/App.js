@@ -1,13 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense, lazy } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
-import Home from './pages/Home';
-import Relax from './pages/Relax';
-import Grounding from './pages/Grounding';
-import About from './pages/About';
-import Library from './pages/Library';
+const Home = lazy(() => import('./pages/Home'));
+const Relax = lazy(() => import('./pages/Relax'));
+const Grounding = lazy(() => import('./pages/Grounding'));
+const About = lazy(() => import('./pages/About'));
+const Library = lazy(() => import('./pages/Library'));
 import { SoundProvider } from './context/SoundContext';
 import { ThemeProvider, useTheme, THEMES } from './context/ThemeContext';
 
@@ -82,13 +82,15 @@ function App() {
           <ThemeWrapper>
             <Navbar />
             <main className="flex-grow">
-              <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/relax" element={<Relax />} />
-                <Route path="/grounding" element={<Grounding />} />
-                <Route path="/library" element={<Library />} />
-                <Route path="/about" element={<About />} />
-              </Routes>
+              <Suspense fallback={<div className='flex-grow flex justify-center items-center'><div className='text-xl font-semibold'>Loading...</div></div>}>
+                <Routes>
+                  <Route path="/" element={<Home />} />
+                  <Route path="/relax" element={<Relax />} />
+                  <Route path="/grounding" element={<Grounding />} />
+                  <Route path="/library" element={<Library />} />
+                  <Route path="/about" element={<About />} />
+                </Routes>
+              </Suspense>
             </main>
             <Footer />
           </ThemeWrapper>
