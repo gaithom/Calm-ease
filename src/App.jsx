@@ -1,4 +1,4 @@
-import React, { useEffect, Suspense, lazy } from 'react';
+import React, { useEffect, Suspense, lazy, useCallback, memo } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
@@ -6,15 +6,21 @@ import Footer from './components/Footer';
 import { SoundProvider } from './context/SoundContext';
 import { ThemeProvider, useTheme, THEMES } from './context/ThemeContext';
 
-// Lazy load page components
-const Home = lazy(() => import('./pages/Home'));
-const Relax = lazy(() => import('./pages/Relax'));
-const Grounding = lazy(() => import('./pages/Grounding'));
-const About = lazy(() => import('./pages/About'));
-const Library = lazy(() => import('./pages/Library'));
+// Lazy load page components with prefetching
+const lazyWithPrefetch = (factory) => {
+  const Component = lazy(factory);
+  Component.prefetch = factory;
+  return Component;
+};
+
+const Home = lazyWithPrefetch(() => import(/* webpackPrefetch: true */ './pages/Home'));
+const Relax = lazyWithPrefetch(() => import(/* webpackPrefetch: true */ './pages/Relax'));
+const Grounding = lazyWithPrefetch(() => import(/* webpackPrefetch: true */ './pages/Grounding'));
+const About = lazyWithPrefetch(() => import(/* webpackPrefetch: true */ './pages/About'));
+const Library = lazyWithPrefetch(() => import(/* webpackPrefetch: true */ './pages/Library'));
 
 // Component to handle theme application
-function ThemeWrapper({ children }) {
+const ThemeWrapper = memo(({ children }) => {
   const { theme, darkMode } = useTheme();
 
   // Apply theme class to html element
@@ -73,33 +79,59 @@ function ThemeWrapper({ children }) {
       {children}
     </div>
   );
-}
+});
 
-function App() {
+// Add display name for better debugging
+ThemeWrapper.displayName = 'ThemeWrapper';
+
+// Memoized App component to prevent unnecessary re-renders
+const App = memo(() => {
+  // Preload other routes when the app loads
+  useEffect(() => {
+    // Prefetch all route components
+    [Home, Relax, Grounding, About, Library].forEach(component => {
+      if (component.prefetch) {
+        component.prefetch().catch(() => {});
+      }
+    });
+  }, []);
+
   return (
     <ThemeProvider>
       <SoundProvider>
         <BrowserRouter>
-          <ScrollToTop />
           <ThemeWrapper>
-            <Navbar />
-            <main className="flex-grow">
-              <Suspense fallback={<div className='flex-grow flex justify-center items-center'><div className='text-xl font-semibold'>Loading...</div></div>}>
-                <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/relax" element={<Relax />} />
-                  <Route path="/grounding" element={<Grounding />} />
-                  <Route path="/library" element={<Library />} />
-                  <Route path="/about" element={<About />} />
-                </Routes>
-              </Suspense>
-            </main>
-            <Footer />
+            <div className="flex flex-col min-h-screen bg-white dark:bg-gray-900">
+              <Navbar />
+              <main className="flex-grow">
+                <ScrollToTop />
+                <Suspense fallback={
+                  <div className="min-h-screen flex items-center justify-center bg-white dark:bg-gray-900">
+                    <div className="animate-pulse text-2xl text-gray-800 dark:text-white">
+                      <div className="w-12 h-12 border-4 border-emerald-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+                      <p>Loading...</p>
+                    </div>
+                  </div>
+                }>
+                  <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/relax" element={<Relax />} />
+                    <Route path="/grounding" element={<Grounding />} />
+                    <Route path="/library" element={<Library />} />
+                    <Route path="/about" element={<About />} />
+                  </Routes>
+                </Suspense>
+              </main>
+              <Footer />
+            </div>
           </ThemeWrapper>
         </BrowserRouter>
       </SoundProvider>
     </ThemeProvider>
   );
-}
+});
+
+// Add display name for better debugging
+App.displayName = 'App';
 
 export default App;
