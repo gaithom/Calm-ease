@@ -1,20 +1,11 @@
 // @ts-check
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { visualizer } from 'rollup-plugin-visualizer';
 import { fileURLToPath } from 'url';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  plugins: [
-    react(),
-    visualizer({
-      template: 'treemap', // or sunburst, network, etc.
-      open: true,
-      gzipSize: true,
-      brotliSize: true,
-    })
-  ],
+  plugins: [react()],
   build: {
     outDir: 'build',
     sourcemap: false,
@@ -43,6 +34,7 @@ export default defineConfig(({ mode }) => ({
     port: 3000,
   },
   css: {
+    postcss: './postcss.config.cjs',
     modules: {
       localsConvention: 'camelCase',
     },

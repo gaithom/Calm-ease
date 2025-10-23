@@ -4,7 +4,7 @@
 
 @layer base {
   :root {
-    /* Default theme (green) */
+    /* Primary color palette */
     --primary-50: 240 253 244;
     --primary-100: 220 252 231;
     --primary-200: 187 247 208;
@@ -16,110 +16,68 @@
     --primary-800: 22 101 52;
     --primary-900: 20 83 45;
     
-    /* Surface colors with transparency */
-    --surface-0: 255 255 255;      /* Base white */
-    --surface-50: 248 250 252;     /* Lightest gray */
-    --surface-100: 241 245 249;    /* Very light gray */
-    --surface-200: 226 232 240;    /* Light gray */
-    --surface-300: 203 213 225;    /* Medium light gray */
-    --surface-400: 148 163 184;    /* Medium gray */
-    --surface-500: 100 116 139;    /* Medium dark gray */
-    --surface-600: 71 85 105;      /* Dark gray */
-    --surface-700: 51 65 85;       /* Very dark gray */
-    --surface-800: 30 41 59;       /* Almost black */
-    --surface-900: 15 23 42;       /* Darkest gray */
-    --surface-950: 2 6 23;         /* Near black */
-    
-    /* Theme transition for smooth switching */
-    --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Surface colors - light mode */
+    --surface-0: 255 255 255;
+    --surface-50: 248 250 252;
+    --surface-100: 241 245 249;
+    --surface-200: 226 232 240;
+    --surface-300: 203 213 225;
+    --surface-400: 148 163 184;
+    --surface-500: 100 116 139;
+    --surface-600: 71 85 105;
+    --surface-700: 51 65 85;
+    --surface-800: 30 41 59;
+    --surface-900: 15 23 42;
+    --surface-950: 2 6 23;
     
     /* Glass effect variables */
     --glass-bg: rgba(255, 255, 255, 0.7);
     --glass-border: rgba(255, 255, 255, 0.2);
     --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    
+    /* Theme transition */
+    --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Semantic colors */
+    --color-success: 16 185 129;
+    --color-warning: 245 158 11;
+    --color-error: 239 68 68;
+    --color-info: 59 130 246;
   }
-  
+
   .dark {
+    /* Surface colors - dark mode */
+    --surface-0: 15 23 42;
+    --surface-50: 30 41 59;
+    --surface-100: 51 65 85;
+    --surface-200: 71 85 105;
+    --surface-300: 100 116 139;
+    --surface-400: 148 163 184;
+    --surface-500: 203 213 225;
+    --surface-600: 226 232 240;
+    --surface-700: 241 245 249;
+    --surface-800: 248 250 252;
+    --surface-900: 255 255 255;
+    --surface-950: 255 255 255;
+    
     /* Dark theme adjustments */
     --glass-bg: rgba(15, 23, 42, 0.7);
     --glass-border: rgba(255, 255, 255, 0.1);
     --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
   }
-}
-
-@layer base {
-  :root {
-    /* Default theme (Green) */
-    --color-primary-50: #f0fdf4;
-    --color-primary-100: #dcfce7;
-    --color-primary-200: #bbf7d0;
-    --color-primary-300: #86efac;
-    --color-primary-400: #4ade80;
-    --color-primary-500: #22c55e;
-    --color-primary-600: #16a34a;
-    --color-primary-700: #15803d;
-    --color-primary-800: #166534;
-    --color-primary-900: #14532d;
-    
-    /* Theme transition for smooth switching */
-    --transition-theme: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
-    /* Surface colors */
-    --color-surface-50: #f8fafc;
-    --color-surface-100: #f1f5f9;
-    --color-surface-200: #e2e8f0;
-    --color-surface-300: #cbd5e1;
-    --color-surface-400: #94a3b8;
-    --color-surface-500: #64748b;
-    --color-surface-600: #475569;
-    --color-surface-700: #334155;
-    --color-surface-800: #1e293b;
-    --color-surface-900: #0f172a;
-    --color-surface-950: #020617;
-    
-    /* Semantic colors */
-    --color-success: #10b981;
-    --color-warning: #f59e0b;
-    --color-error: #ef4444;
-    --color-info: #3b82f6;
+  
+  html {
+    @apply antialiased text-surface-900 bg-surface-50;
+    -webkit-tap-highlight-color: transparent;
   }
 
-
-  /* Dark mode overrides */
-  .dark {
-    --color-primary-50: #052e16;
-    --color-primary-100: #14532d;
-    --color-primary-200: #166534;
-    --color-primary-300: #15803d;
-    --color-primary-400: #16a34a;
-    --color-primary-500: #22c55e;
-    --color-primary-600: #4ade80;
-    --color-primary-700: #86efac;
-    --color-primary-800: #bbf7d0;
-    --color-primary-900: #dcfce7;
-    
-    --color-surface-50: #0f172a;
-    --color-surface-100: #1e293b;
-    --color-surface-200: #334155;
-    --color-surface-300: #475569;
-    --color-surface-400: #64748b;
-    --color-surface-500: #94a3b8;
-    --color-surface-600: #cbd5e1;
-    --color-surface-700: #e2e8f0;
-    --color-surface-800: #f1f5f9;
-    --color-surface-900: #f8fafc;
-    --color-surface-950: #ffffff;
+  body {
+    @apply min-h-screen bg-surface-50 dark:bg-surface-900 transition-colors duration-200;
   }
 
-  [data-theme="teal"] .dark {
-    --color-primary-50: #042f2e;
-    --color-primary-100: #134e4a;
-    --color-primary-200: #115e59;
-    --color-primary-300: #0f766e;
-    --color-primary-400: #0d9488;
-    --color-primary-500: #14b8a6;
-    --color-primary-600: #2dd4bf;
-    --color-primary-700: #5eead4;
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2 h-2;
     --color-primary-800: #99f6e4;
     --color-primary-900: #ccfbf1;
   }
