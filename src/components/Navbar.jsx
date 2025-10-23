@@ -22,8 +22,16 @@ export default function Navbar() {
       setIsOpen(false);
     };
 
-    window.addEventListener('popstate', handleRouteChange);
-    return () => window.removeEventListener('popstate', handleRouteChange);
+    // Listen for route changes
+    const unlisten = () => {
+      handleRouteChange();
+    };
+
+    // Close menu when route changes
+    window.addEventListener('popstate', unlisten);
+    return () => {
+      window.removeEventListener('popstate', unlisten);
+    };
   }, []);
 
   // Add scroll effect to navbar
@@ -140,7 +148,7 @@ export default function Navbar() {
             <ThemeToggle />
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="ml-3 p-2 rounded-md text-white hover:text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+              className="ml-3 p-3 rounded-md text-white hover:text-gray-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 transition-colors duration-200"
               aria-label={isOpen ? 'Close menu' : 'Open menu'}
               aria-controls="mobile-menu"
             >
@@ -163,26 +171,27 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`md:hidden transition-all duration-300 ease-in-out ${
+        className={`md:hidden transition-all duration-300 ease-in-out bg-gray-800 ${
           isOpen 
-            ? 'max-h-screen opacity-100 visible' 
+            ? 'max-h-screen opacity-100 visible py-2' 
             : 'max-h-0 opacity-0 invisible overflow-hidden'
         }`}
         id="mobile-menu"
         role="menu"
         aria-orientation="vertical"
         aria-labelledby="mobile-menu-button"
+        aria-expanded={isOpen}
       >
-        <nav className="px-2 pt-2 pb-4 space-y-1 sm:px-3" aria-label="Mobile navigation">
+        <nav className="px-4 py-2 space-y-2" aria-label="Mobile navigation">
           {navItems.map((item) => (
             <NavLink
               key={item.name}
               to={item.path}
               className={({ isActive }) =>
-                `group flex items-center px-3 py-3 rounded-md text-base font-medium transition-colors duration-200 ${
+                `group flex items-center px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                   isActive
-                    ? 'bg-gray-700 text-white'
-                    : 'text-gray-300 hover:bg-gray-700 hover:text-white'
+                    ? 'bg-gray-700 text-white shadow-md'
+                    : 'text-gray-300 hover:bg-gray-700 hover:text-white active:scale-95'
                 }`
               }
               onClick={() => setIsOpen(false)}

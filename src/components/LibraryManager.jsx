@@ -219,35 +219,36 @@ export default function LibraryManager() {
             ) : (
               <div className="space-y-3">
                 {items.map((it) => (
-                  <div key={it.id} className="group flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-4 rounded-xl bg-white/80 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 hover:shadow-md transition-all">
-                    <div className="flex items-center gap-4 flex-1 min-w-0">
-                      <div className="text-2xl">{it.kind === 'voice' ? '🎤' : '🎵'}</div>
-                      <div className="flex-1 min-w-0">
-                        <div className="font-medium text-slate-800 dark:text-slate-200 truncate">{it.name}</div>
-                        <div className="flex items-center flex-wrap gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
-                          <span className={`px-2 py-1 rounded-full ${
+                  <div key={it.id} className="group flex flex-col sm:flex-row items-start justify-between gap-3 p-3 sm:p-4 rounded-xl bg-white/80 dark:bg-slate-700/60 border border-slate-200/60 dark:border-slate-600/60 hover:shadow-md transition-all">
+                    <div className="flex items-start sm:items-center gap-3 flex-1 w-full min-w-0">
+                      <div className="text-2xl flex-shrink-0">{it.kind === 'voice' ? '🎤' : '🎵'}</div>
+                      <div className="flex-1 min-w-0 overflow-hidden">
+                        <div className="font-medium text-slate-800 dark:text-slate-200 text-sm sm:text-base break-words">{it.name}</div>
+                        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-slate-500 dark:text-slate-400 mt-1">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-xs ${
                             it.kind === 'voice' 
                               ? 'bg-purple-100 dark:bg-purple-800/50 text-purple-700 dark:text-purple-300'
                               : 'bg-blue-100 dark:bg-blue-800/50 text-blue-700 dark:text-blue-300'
                           }`}>
-                            {it.kind === 'voice' ? 'Voice Guidance' : 'Background'}
+                            {it.kind === 'voice' ? 'Voice' : 'Music'}
                           </span>
-                          <span>• {(it.size/1024/1024).toFixed(2)} MB</span>
+                          <span className="whitespace-nowrap">{(it.size/1024/1024).toFixed(2)} MB</span>
                         </div>
                       </div>
                     </div>
-                    <div className="flex items-center gap-2 w-full sm:w-auto sm:opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center justify-between w-full sm:w-auto sm:justify-end gap-2 mt-2 sm:mt-0 sm:opacity-0 group-hover:opacity-100 transition-opacity">
                       <button 
-                        className="btn btn-sm flex-grow sm:flex-grow-0 bg-emerald-600 hover:bg-emerald-700 text-white border-0 rounded-lg" 
+                        className="btn btn-xs sm:btn-sm flex-1 sm:flex-initial bg-emerald-600 hover:bg-emerald-700 text-white border-0 rounded-lg px-3 py-1.5 sm:px-4 sm:py-2" 
                         onClick={() => playItem(it)}
                       >
-                        ▶️ Play
+                        <span className="sm:inline">▶️</span> <span className="ml-1">Play</span>
                       </button>
                       <button 
-                        className="btn btn-sm btn-outline btn-error rounded-lg" 
+                        className="btn btn-xs sm:btn-sm btn-outline btn-error rounded-lg px-3 py-1.5 sm:px-4 sm:py-2" 
                         onClick={() => removeItem(it.id)}
+                        aria-label="Delete"
                       >
-                        🗑️
+                        <span className="sm:inline">🗑️</span> <span className="sm:hidden ml-1">Delete</span>
                       </button>
                     </div>
                   </div>
@@ -257,12 +258,12 @@ export default function LibraryManager() {
           </div>
           
           {/* Quick Actions */}
-          <div className="flex justify-center gap-4">
+          <div className="flex justify-center">
             <button 
-              className="btn btn-outline rounded-xl px-6" 
+              className="btn btn-outline rounded-xl px-4 py-2 text-sm sm:text-base" 
               onClick={stopAll}
             >
-              ⏸️ Stop All Audio
+              <span className="text-base">⏸️</span> <span className="ml-1">Stop All Audio</span>
             </button>
           </div>
         </div>
