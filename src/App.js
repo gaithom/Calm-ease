@@ -3,13 +3,15 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ScrollToTop from './components/ScrollToTop';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import { SoundProvider } from './context/SoundContext';
+import { ThemeProvider, useTheme, THEMES } from './context/ThemeContext';
+
+// Lazy load page components
 const Home = lazy(() => import('./pages/Home'));
 const Relax = lazy(() => import('./pages/Relax'));
 const Grounding = lazy(() => import('./pages/Grounding'));
 const About = lazy(() => import('./pages/About'));
 const Library = lazy(() => import('./pages/Library'));
-import { SoundProvider } from './context/SoundContext';
-import { ThemeProvider, useTheme, THEMES } from './context/ThemeContext';
 
 // Component to handle theme application
 function ThemeWrapper({ children }) {
